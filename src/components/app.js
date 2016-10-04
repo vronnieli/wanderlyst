@@ -15,7 +15,7 @@ class App extends Component {
       <div>
         <NavBar/>
         <SearchBar/>
-        <Link to="/cocktails">All Cocktails</Link>
+        <Link to="/itineraries">All Itineraries</Link>
       </div>
     );
   }
