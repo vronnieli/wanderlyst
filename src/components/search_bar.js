@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
 const SearchBar = function(props) {
   function onSubmitHandler(event){
     event.preventDefault();
-    debugger;
     props.actions.searchedItineraries(event.target.children[1].value)
     event.target.children[1].value = ""
   }
