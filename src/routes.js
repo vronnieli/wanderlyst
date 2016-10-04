@@ -5,7 +5,8 @@ import App from './components/app';
 import ItinerariesIndex from './components/itineraries_index'
 
 export default (
-  <Route path="/" component={App}>
-    <Route path="/cocktails" component={ ItinerariesIndex } />
+  <Route>
+    <Route path="/" component={App}/>
+    <Route path="/itineraries" component={ ItinerariesIndex }/>
   </Route>
 )
