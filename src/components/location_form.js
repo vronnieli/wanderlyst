@@ -1,7 +1,6 @@
 import React from 'react';
-import LocationForm from './location_form';
 
-export default function DayForm(props){
+export default function LocationForm(props){
   // debugger;
   return(
     <div>

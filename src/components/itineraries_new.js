@@ -24,7 +24,6 @@ class ItinerariesNew extends React.Component {
     this.newItineraryHandler = this.newItineraryHandler.bind(this)
   }
 
-
   newItineraryHandler(event) {
     event.preventDefault();
     const newItinerary = {
@@ -36,18 +35,39 @@ class ItinerariesNew extends React.Component {
   }
 
   updateDay(event) {
-    this.setState()
+    const copyOfState = Object.assign({},this.state)
+    copyOfState.itinerary.days[0].day = event.target.value
+    this.setState(copyOfState)
+    // this.setState({
+    //   itinerary: Object.assign({}, this.state.itinerary, {
+    //     days: Object.assign([{}], this.state.days, [{
+    //       day: event.target.value
+    //     }])
+    //   })
+    // })
+  }
+  updateLocation(event) {
+    const copyOfState = Object.assign({},this.state)
+    copyOfState.itinerary.days[0].day.location = event.target.value
+    this.setState(copyOfState)
+    // this.setState({
+    //   itinerary: Object.assign({}, this.state.itinerary, {
+    //     days: Object.assign([{}], this.state.days, [{
+    //       day: event.target.value
+    //     }])
+    //   })
+    // })
   }
 
   collectDayForm() {
-    this.state.itinerary.days.map((day) => {
-      debugger;
-      return <div></div>
+    return this.state.itinerary.days.map((day) => {
+      return <DayForm day={day} onFormChange={this.updateDay.bind(this)}/>
     })
   }
 
   render() {
     const dayFormElements = this.collectDayForm()
+    // debugger
     return(
       <div>
         <form onSubmit={this.newItineraryHandler}>
