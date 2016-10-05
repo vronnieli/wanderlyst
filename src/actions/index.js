@@ -15,3 +15,18 @@ export function fetchItineraries(){
     payload: itineraries
   }
 }
+
+export function createItinerary(params){
+  const itinerary = fetch(`${BASE_URL}api/v1/itineraries`, {
+    method: 'POST',
+    body: JSON.stringify(params),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  })
+  return {
+    type: 'CREATE_ITINERARY',
+    payload: itinerary
+  }
+}

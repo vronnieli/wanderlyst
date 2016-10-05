@@ -5,14 +5,14 @@ function ItinerariesIndex(props){
 
   function renderActivities(activity) {
     return(
-        <li>{activity.name}</li>
+        <li key={activity.id}>{activity.name}</li>
     )
   }
 
   function renderLocations(location) {
     return(
       <div>
-        <li>{location.city}</li>
+        <li key={location.id}>{location.city}</li>
         <ul>
           {location.activities.map(renderActivities)}
         </ul>
@@ -23,7 +23,7 @@ function ItinerariesIndex(props){
   function renderDays(day) {
     return(
       <div>
-        <li>Day {day.day}</li>
+        <li key={day.id}>Day {day.day}</li>
         <ul>
           {day.locations.map(renderLocations)}
         </ul>
@@ -34,7 +34,7 @@ function ItinerariesIndex(props){
   function renderItineraries(itinerary) {
     return (
       <div>
-        <li>{itinerary.name}</li>
+        <li key={itinerary.id}>{itinerary.name}</li>
         <ul>
           {itinerary.days.map(renderDays)}
         </ul>
