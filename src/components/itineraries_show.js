@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router'
 
-function ItinerariesIndex(props){
+function ItinerariesShow(props){
+  const itinerary = props.itinerary
 
   function renderActivities(activity) {
     return(
@@ -32,33 +32,31 @@ function ItinerariesIndex(props){
     )
   }
 
-  function renderItineraries(itinerary) {
-    return (
+  function renderUsers(user) {
+    return(
       <div>
-        <li key={itinerary.id}>
-          <Link to={`/itineraries/${itinerary.id}`}>{itinerary.name}</Link>
-        </li>
-        <ul>
-          {itinerary.days.map(renderDays)}
-        </ul>
+        <li key={user.id}>{user.username}</li>
       </div>
     )
   }
 
   return (
     <div>
+      <h3>{itinerary.name}</h3>
+      User: {itinerary.users.map(renderUsers)}
       <ul>
-        {props.itineraries.map(renderItineraries)}
+        {itinerary.days.map(renderDays)}
       </ul>
     </div>
   )
+
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state, ownProps){
+  const itinerary = state.itineraries.find(itinerary => itinerary.id == ownProps.params.id);
   return {
-    itineraries: state.itineraries
+    itinerary: itinerary
   }
 }
 
-const componentCreator = connect(mapStateToProps)
-export default componentCreator(ItinerariesIndex);
+export default connect(mapStateToProps)(ItinerariesShow)
