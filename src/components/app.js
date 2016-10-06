@@ -13,7 +13,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar/>
         <SearchBar/>
         <Link to="/itineraries">All Itineraries</Link>
         <br></br>
