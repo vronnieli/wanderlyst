@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import '../App.css';
-import NavBar from './nav_bar'
 import SearchBar from './search_bar'
 import {Link} from 'react-router';
 

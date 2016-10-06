@@ -31,7 +31,6 @@ class ItinerariesNew extends React.Component {
   }
 
   newItineraryHandler(event) {
-  // debugger;
     event.preventDefault();
     const newItinerary = {
       itinerary: {
@@ -52,7 +51,7 @@ class ItinerariesNew extends React.Component {
 
   addDay() {
     const copyOfState = Object.assign({},this.state)
-  
+
     copyOfState.itinerary.days.push({
       day: "",
       locations: [{
@@ -95,7 +94,7 @@ class ItinerariesNew extends React.Component {
   }
 
   updateDay(value) {
-  
+
     const copyOfState = Object.assign({},this.state)
     copyOfState.itinerary.days[0].day.location = event.target.value
     this.setState(copyOfState)
@@ -116,7 +115,7 @@ class ItinerariesNew extends React.Component {
 
   collectDayForm() {
     const dayNumber = this.state.itinerary.days.length
-  
+
     return this.state.itinerary.days.map((day) => {
       return <DayForm day={day} addDay={this.addDay} updateDay={this.updateDay} value={dayNumber} addLocation={this.addLocation} updateLocation={this.updateLocation} ref={this.refs} />
     })
