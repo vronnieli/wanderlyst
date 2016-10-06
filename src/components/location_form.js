@@ -2,9 +2,9 @@ import React from 'react';
 import ActivityForm from './activity_form'
 
 class LocationForm extends React.Component {
-  debugger;
+  
   constructor(props){
-    debugger;
+    
     super(props);
     this.addLocation = this.addLocation.bind(this)
   }
@@ -12,9 +12,9 @@ class LocationForm extends React.Component {
   collectActivityForm() {
     // const dayNumber = this.state.itinerary.days.length
     const location = this.props.location
-    debugger;
+    
     return this.props.location.activities.map((activity) => {
-      return <ActivityForm activity={activity} addActivity={this.props.addActivity}  updateActivity={this.props.updateActivity} location={location}/>
+      return <ActivityForm activity={activity} addActivity={this.props.addActivity}  updateActivity={this.props.updateActivity} location={location} ref={this.refs} />
     })
   }
 
@@ -27,7 +27,7 @@ class LocationForm extends React.Component {
   const activityFormElements = this.collectActivityForm()
     return(
       <div>
-        <input type="text" />
+        <input type="text" ref="location-name" />
         <button onClick={this.addLocation}>+ Location</button>
         {activityFormElements}
       </div>

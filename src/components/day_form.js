@@ -11,9 +11,9 @@ class DayForm extends React.Component {
   collectLocationForm() {
     // const dayNumber = this.state.itinerary.days.length
     const day = this.props.day
-    debugger;
+    
     return this.props.day.locations.map((location) => {
-      return <LocationForm location={location} addLocation={this.props.addLocation}  updateLocation={this.props.updateLocation} day={day}/>
+      return <LocationForm location={location} addLocation={this.props.addLocation}  updateLocation={this.props.updateLocation} day={day} ref={this.refs} />
     })
   }
 
@@ -26,7 +26,7 @@ class DayForm extends React.Component {
   const locationFormElements = this.collectLocationForm()
     return(
       <div>
-        <input type="text" onChange={this.updateDay} id={this.value}/>
+        <input type="text" onChange={this.updateDay} id={this.value} ref="day-name" />
         {this.value}
         <button onClick={this.addDay}>+ Date</button>
         {locationFormElements}

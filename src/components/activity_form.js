@@ -17,7 +17,7 @@ class ActivityForm extends React.Component {
   render(){
     return(
       <div>
-        <input type="text" />
+        <input type="text" ref="activity-name"/>
         <button onClick={this.addActivity}>+ Activity</button>
       </div>
     )
