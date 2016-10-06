@@ -2,46 +2,34 @@ import React from 'react';
 import LocationForm from './location_form';
 
 class DayForm extends React.Component {
-  debugger;
   constructor(props){
-    debugger;
     super(props);
-
     this.addDay = this.addDay.bind(this)
   }
 
 
-  // collectLocationForm() {
-  //   // const dayNumber = this.state.itinerary.days.length
-  //   debugger;
-  //   return this.props.day.locations.map((location) => {
-  //     return <LocationForm location={location}/>
-  //   })
-  // }
+  collectLocationForm() {
+    // const dayNumber = this.state.itinerary.days.length
+    const day = this.props.day
+    debugger;
+    return this.props.day.locations.map((location) => {
+      return <LocationForm location={location} addLocation={this.props.addLocation}  updateLocation={this.props.updateLocation} day={day}/>
+    })
+  }
 
   addDay(event) {
     event.preventDefault();
-    debugger;
-    const copyOfItinerary = Object.assign({},this.props.state.itinerary)
-    copyOfItinerary.days.push({day: ""})
-    this.props.updateState(copyOfItinerary)
-    // this.setState({
-    //   itinerary: Object.assign({}, this.state.itinerary, {
-    //     days: Object.assign([{}], this.state.days, [{
-    //       day: event.target.value
-    //     }])
-    //   })
-    // })
+    this.props.addDay();
   }
 
   render(){
-
+  const locationFormElements = this.collectLocationForm()
     return(
       <div>
-        <input type="text" onChange={this.updateDay} id={this.value} updateLocation={this.updateLocation}/>
+        <input type="text" onChange={this.updateDay} id={this.value}/>
         {this.value}
         <button onClick={this.addDay}>+ Date</button>
-
+        {locationFormElements}
       </div>
     )
   }

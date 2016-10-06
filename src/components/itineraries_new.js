@@ -22,15 +22,12 @@ class ItinerariesNew extends React.Component {
         }]
       }
     }
-    this.newItineraryHandler = this.newItineraryHandler.bind(this)
+    this.addDay = this.addDay.bind(this)
     this.addLocation = this.addLocation.bind(this)
+    this.newItineraryHandler = this.newItineraryHandler.bind(this)
     this.updateDay = this.updateDay.bind(this)
     this.updateLocation = this.updateLocation.bind(this)
-    this.updateState = this.updateState.bind(this)
-  }
 
-  updateState(updatedItinerary) {
-    this.setState(updatedItinerary)
   }
 
   newItineraryHandler(event) {
@@ -43,47 +40,57 @@ class ItinerariesNew extends React.Component {
     this.props.actions.createItinerary(newItinerary)
   }
 
-  // addDay(event) {
-  //   event.preventDefault();
-  //   const copyOfState = Object.assign({},this.state)
-  //   copyOfState.itinerary.days.push({day: ""})
-  //   this.setState(copyOfState)
-  //   // this.setState({
-  //   //   itinerary: Object.assign({}, this.state.itinerary, {
-  //   //     days: Object.assign([{}], this.state.days, [{
-  //   //       day: event.target.value
-  //   //     }])
-  //   //   })
-  //   // })
-  // }
-
-  addLocation(event) {
-    event.preventDefault();
+  addDay() {
     const copyOfState = Object.assign({},this.state)
-    copyOfState.itinerary.days.slice(-1,1)[0].locations.push({location: ""})
     debugger;
+    copyOfState.itinerary.days.push({
+      day: "",
+      locations: [{
+        city: "",
+        activities: [{
+          name: ""
+        }]
+      }]
+    })
     this.setState(copyOfState)
-    debugger;
-    // this.setState({
-    //   itinerary: Object.assign({}, this.state.itinerary, {
-    //     days: Object.assign([{}], this.state.days, [{
-    //       day: event.target.value
-    //     }])
-    //   })
-    // })
   }
 
-  updateDay(event) {
+  addLocation(day) {
+    const copyOfState = Object.assign({},this.state)
+    debugger
+    // const dayNumber = day.day
+    // const dayToAddLocation = copyOfState.itinerary.days.map((day) => {
+    //   if (day.day === dayNumber) {
+    //     return day
+    //   }})
+
+    copyOfState.itinerary.days[0].locations.push({
+      city: "",
+      activities: [{
+        name: ""
+      }]
+    })
+  }
+
+  addActivity(location) {
+    const copyOfState = Object.assign({},this.state)
+    debugger
+    // const dayNumber = day.day
+    // const dayToAddLocation = copyOfState.itinerary.days.map((day) => {
+    //   if (day.day === dayNumber) {
+    //     return day
+    //   }})
+
+    copyOfState.itinerary.days[0].locations[0].activities.push({
+      name: ""
+    })
+  }
+
+  updateDay(value) {
+    debugger;
     const copyOfState = Object.assign({},this.state)
     copyOfState.itinerary.days[0].day.location = event.target.value
     this.setState(copyOfState)
-    // this.setState({
-    //   itinerary: Object.assign({}, this.state.itinerary, {
-    //     days: Object.assign([{}], this.state.days, [{
-    //       day: event.target.value
-    //     }])
-    //   })
-    // })
   }
 
   updateLocation(event) {
@@ -103,7 +110,7 @@ class ItinerariesNew extends React.Component {
     const dayNumber = this.state.itinerary.days.length
     debugger;
     return this.state.itinerary.days.map((day) => {
-      return <DayForm day={day} updateDay={this.updateDay} state={this.state} updateState={this.updateState} value={dayNumber} updateLocation={this.updateLocation} addLocation={this.addLocation} />
+      return <DayForm day={day} addDay={this.addDay} updateDay={this.updateDay} value={dayNumber} addLocation={this.addLocation} updateLocation={this.updateLocation} />
     })
   }
 
