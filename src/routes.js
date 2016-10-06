@@ -9,7 +9,7 @@ export default (
   <Route>
     <Route path="/" component={App} >
       <Route path="/itineraries" component={ ItinerariesIndex } />
-      <Route path="/itineraries/new" component={ ItinerariesNew }/>
+      <Route path="/itineraries/new" component={ ItinerariesNew } />
     </Route>
   </Route>
 )
