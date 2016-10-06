@@ -3,6 +3,7 @@ export default function itineraries_reducer(state=[], action) {
     case 'FETCH_ITINERARIES':
       return action.payload;
     case 'SEARCHED_ITINERARIES':
+    debugger;
       return action.payload
     case 'CREATE_ITINERARY':
       return [...state, action.payload]
