@@ -14,8 +14,9 @@ class App extends Component {
       <div>
         <SearchBar/>
         <Link to="/itineraries">All Itineraries</Link>
-        <br></br>
+        <br />
         <Link to="/itineraries/new">Create An Itinerary</Link>
+        <br />
         {this.props.children}
       </div>
     );

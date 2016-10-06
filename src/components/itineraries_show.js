@@ -52,10 +52,33 @@ function ItinerariesShow(props){
 
 }
 
+
 function mapStateToProps(state, ownProps){
   const itinerary = state.itineraries.find(itinerary => itinerary.id == ownProps.params.id);
-  return {
-    itinerary: itinerary
+  if (itinerary) {
+    return {
+      itinerary: itinerary
+    }
+  } else {
+    return  {
+      itinerary: {
+        name: "",
+        users: [{
+          username: "",
+          first_name: "",
+          last_name: ""
+        }],
+        days: [{
+          day: "",
+          locations: [{
+            city: "",
+            activities: [{
+              name: ""
+            }]
+          }]
+        }]
+      }
+    }
   }
 }
 
