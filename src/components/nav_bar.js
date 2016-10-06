@@ -1,9 +1,10 @@
 import React from 'react';
+// import SearchBar from './search_bar'
 
 export default function NavBar(){
   return (
-    <nav>
-      Here is the Nav Bar
-    </nav>
+		<nav className="navbar navbar-inverse">
+
+		</nav>
   )
 }
