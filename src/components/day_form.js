@@ -1,10 +1,38 @@
 import React from 'react';
+import LocationForm from './location_form';
 
-export default function DayForm(props){
-  debugger;
-  return(
-    <div>
-      <input type="text" onChange={this.updateDay}>{props.day.day}</input>
-    </div>
-  )
+class DayForm extends React.Component {
+  constructor(props){
+    super(props);
+    this.addDay = this.addDay.bind(this)
+  }
+
+
+  collectLocationForm() {
+    // const dayNumber = this.state.itinerary.days.length
+    const day = this.props.day
+    
+    return this.props.day.locations.map((location) => {
+      return <LocationForm location={location} addLocation={this.props.addLocation}  updateLocation={this.props.updateLocation} day={day} ref={this.refs} />
+    })
+  }
+
+  addDay(event) {
+    event.preventDefault();
+    this.props.addDay();
+  }
+
+  render(){
+  const locationFormElements = this.collectLocationForm()
+    return(
+      <div>
+        <input type="text" onChange={this.updateDay} id={this.value} ref="day-name" />
+        {this.value}
+        <button onClick={this.addDay}>+ Date</button>
+        {locationFormElements}
+      </div>
+    )
+  }
 }
+
+export default DayForm

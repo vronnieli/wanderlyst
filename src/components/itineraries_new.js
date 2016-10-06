@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import DayForm from './day_form';
 
+
 class ItinerariesNew extends React.Component {
   constructor(props) {
     super(props)
@@ -21,30 +22,107 @@ class ItinerariesNew extends React.Component {
         }]
       }
     }
+    this.addDay = this.addDay.bind(this)
+    this.addLocation = this.addLocation.bind(this)
     this.newItineraryHandler = this.newItineraryHandler.bind(this)
+    this.updateDay = this.updateDay.bind(this)
+    this.updateLocation = this.updateLocation.bind(this)
+
   }
 
-
   newItineraryHandler(event) {
+  // debugger;
     event.preventDefault();
     const newItinerary = {
       itinerary: {
-        name: this.refs["itinerary-name"].value
+        name: this.refs["itinerary-name"].value,
+        days: [{
+          day: this.refs[{}].refs["day-name"].value,
+          locations: [{
+            city: this.refs[{}].refs[{}].refs["location-name"].value,
+            activities: [{
+              name: this.refs[{}].refs[{}].refs[{}].refs["activity-name"].value
+            }]
+          }]
+        }]
       }
     }
     this.props.actions.createItinerary(newItinerary)
   }
 
-  updateDay(event) {
-    this.setState()
+  addDay() {
+    const copyOfState = Object.assign({},this.state)
+  
+    copyOfState.itinerary.days.push({
+      day: "",
+      locations: [{
+        city: "",
+        activities: [{
+          name: ""
+        }]
+      }]
+    })
+    this.setState(copyOfState)
+  }
+
+  addLocation(day) {
+    const copyOfState = Object.assign({},this.state)
+      // const dayNumber = day.day
+    // const dayToAddLocation = copyOfState.itinerary.days.map((day) => {
+    //   if (day.day === dayNumber) {
+    //     return day
+    //   }})
+
+    copyOfState.itinerary.days[0].locations.push({
+      city: "",
+      activities: [{
+        name: ""
+      }]
+    })
+  }
+
+  addActivity(location) {
+    const copyOfState = Object.assign({},this.state)
+      // const dayNumber = day.day
+    // const dayToAddLocation = copyOfState.itinerary.days.map((day) => {
+    //   if (day.day === dayNumber) {
+    //     return day
+    //   }})
+
+    copyOfState.itinerary.days[0].locations[0].activities.push({
+      name: ""
+    })
+  }
+
+  updateDay(value) {
+  
+    const copyOfState = Object.assign({},this.state)
+    copyOfState.itinerary.days[0].day.location = event.target.value
+    this.setState(copyOfState)
+  }
+
+  updateLocation(event) {
+    const copyOfState = Object.assign({},this.state)
+    copyOfState.itinerary.days[0].day.location = event.target.value
+    this.setState(copyOfState)
+    // this.setState({
+    //   itinerary: Object.assign({}, this.state.itinerary, {
+    //     days: Object.assign([{}], this.state.days, [{
+    //       day: event.target.value
+    //     }])
+    //   })
+    // })
   }
 
   collectDayForm() {
-    this.state.itinerary.days.map((day) => {
-      debugger;
-      return <div></div>
+    const dayNumber = this.state.itinerary.days.length
+  
+    return this.state.itinerary.days.map((day) => {
+      return <DayForm day={day} addDay={this.addDay} updateDay={this.updateDay} value={dayNumber} addLocation={this.addLocation} updateLocation={this.updateLocation} ref={this.refs} />
     })
   }
+
+
 
   render() {
     const dayFormElements = this.collectDayForm()
@@ -65,6 +143,7 @@ class ItinerariesNew extends React.Component {
 function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(actions, dispatch)}
 }
+
 
 const componentCreator = connect(null, mapDispatchToProps)
 
