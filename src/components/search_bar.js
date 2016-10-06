@@ -13,7 +13,7 @@ const SearchBar = function(props) {
   return (
     <nav className="navbar navbar-inverse">
       <form className="form-inline" onSubmit={onSubmitHandler.bind(this)}>
-        <label>Search:</label>
+        <label color="white">Search:</label>
         <input type="text" placeholder="city"/>
         <input type="number" placeholder="number of days"/>
         <input type="text" placeholder="activity"/>
