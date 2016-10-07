@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router'
 
 function ItinerariesIndex(props){
-
+// debugger
   // function allowDrop(event) {
   //     event.preventDefault();
   // }
@@ -50,7 +50,7 @@ function ItinerariesIndex(props){
 
   function renderItineraries(itinerary) {
     return (
-      <div className="col-lg-4">
+      <div >
         <div className="panel panel-default">
           <div className="panel-heading">
             <h3 className="panel-title">
@@ -65,7 +65,10 @@ function ItinerariesIndex(props){
 
   return (
     <div>
-      {props.itineraries.map(renderItineraries)}
+      <div className="col-lg-4">
+        {props.itineraries.map(renderItineraries)}
+      </div>
+      {props.children}
     </div>
   )
 }

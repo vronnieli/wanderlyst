@@ -37,7 +37,7 @@ class ItinerariesNew extends React.Component {
   }
 
   newItineraryHandler(event) {
-    debugger;
+    // debugger;
     event.preventDefault();
     // const newItinerary = {
     //   itinerary: {
@@ -67,7 +67,7 @@ class ItinerariesNew extends React.Component {
         id: 1,
         city: "",
         activities: [{
-          id: "",
+          id: 1,
           name: ""
         }]
       }]

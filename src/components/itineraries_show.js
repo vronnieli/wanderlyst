@@ -41,7 +41,7 @@ function ItinerariesShow(props){
   }
 
   return (
-    <div className="col-lg-8">
+    <div className="col-lg-6">
       <div className="panel panel-default">
         <div className="panel-heading">
           <h2 className="panel-title">
