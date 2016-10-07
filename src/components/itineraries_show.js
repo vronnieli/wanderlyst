@@ -41,14 +41,15 @@ function ItinerariesShow(props){
   }
 
   return (
-    <div className="">
-    <div className="panel panel-default">
-      <div className="panel-heading">
-        <h3 className="panel-title">
-          {itinerary.name}
-        </h3>
-        <p className="list-group-item">User(s): {itinerary.users.map(renderUsers)}</p>
-            {itinerary.days.map(renderDays)}
+    <div className="col-lg-8">
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h3 className="panel-title">
+            {itinerary.name}
+          </h3>
+          <p className="list-group-item">User(s): {itinerary.users.map(renderUsers)}</p>
+          {itinerary.days.map(renderDays)}
+        </div>
       </div>
     </div>
   )
