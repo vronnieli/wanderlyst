@@ -1,0 +1,23 @@
+{
+  "name": "wanderlyst",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Schyler Hosler <schylerhosler@gmail.com>",
+    "Tony Mai <tonymaibox@gmail.com>",
+    "Veronica Li <vronnieli@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vronnieli/wanderlyst",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react-motion": "https://unpkg.com/react-motion/bower.zip"
+  }
+}
