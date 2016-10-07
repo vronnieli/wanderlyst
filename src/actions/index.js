@@ -1,5 +1,5 @@
-// const BASE_URL = 'https://wanderlyst-api.herokuapp.com/'
-const BASE_URL = 'http://localhost:3000/'
+const BASE_URL = 'https://wanderlyst-api.herokuapp.com/'
+// const BASE_URL = 'http://localhost:3000/'
 
 export function searchedItineraries(searchTerm){
   const itineraries = fetch(`${BASE_URL}api/v1/itineraries/:search`, {
