@@ -12,7 +12,7 @@ function ItinerariesShow(props){
 
   function renderLocations(location) {
     return(
-      <div className="list-group-item">
+      <div draggable="true" className="list-group-item">
         <p key={location.id}>{location.city}</p>
         <ul>
           {location.activities.map(renderActivities)}
@@ -23,7 +23,7 @@ function ItinerariesShow(props){
 
   function renderDays(day) {
     return(
-      <div className="list-group-item">
+      <div draggable="true" className="list-group-item">
         <h3 key={day.id}>Day {day.day}</h3>
         <ul>
           {day.locations.map(renderLocations)}
