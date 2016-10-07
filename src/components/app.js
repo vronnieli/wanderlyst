@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import '../App.css';
 import SearchBar from './search_bar'
 import {Link} from 'react-router';
+import * as actions from '../actions/index';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <SearchBar/><br /><br /><br />
-        <Link to="/itineraries">All Itineraries</Link>
+        <Link to="/itineraries" onClick={this.props.actions.fetchItineraries}>All Itineraries</Link>
         <br />
         <Link to="/itineraries/new">Create An Itinerary</Link>
         <br />
@@ -23,7 +26,15 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapDispatchToProps(dispatch){
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+};
+
+const componentCreator = connect(null, mapDispatchToProps);
+export default componentCreator(App);
+
 
 
 // <div className="App">

@@ -10,6 +10,7 @@ export function searchedItineraries(searchTerm){
       },
     body: JSON.stringify(searchTerm)
     }).then((response) => {return response.json()}).then((itinerariesPayload) => {return itinerariesPayload})
+    // debugger
   return {
     type: 'SEARCHED_ITINERARIES',
     payload: itineraries
@@ -33,6 +34,7 @@ export function searchedItineraries(searchTerm){
 
 export function fetchItineraries(){
   const itineraries = fetch(`${BASE_URL}api/v1/itineraries`).then((response) => {return response.json()}).then((itinerariesPayload) => {return itinerariesPayload})
+  // debugger
   return {
     type: 'FETCH_ITINERARIES',
     payload: itineraries
