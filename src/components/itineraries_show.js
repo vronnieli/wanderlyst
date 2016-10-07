@@ -6,14 +6,14 @@ function ItinerariesShow(props){
 
   function renderActivities(activity) {
     return(
-        <li key={activity.id}>{activity.name}</li>
+        <p draggable="true" className="list-group-item" key={activity.id}>{activity.name}</p>
     )
   }
 
   function renderLocations(location) {
     return(
-      <div>
-        <li key={location.id}>{location.city}</li>
+      <div draggable="true" className="list-group-item">
+        <p key={location.id}>{location.city}</p>
         <ul>
           {location.activities.map(renderActivities)}
         </ul>
@@ -23,8 +23,8 @@ function ItinerariesShow(props){
 
   function renderDays(day) {
     return(
-      <div>
-        <li key={day.id}>Day {day.day}</li>
+      <div draggable="true" className="list-group-item">
+        <h4 key={day.id}>Day {day.day}</h4>
         <ul>
           {day.locations.map(renderLocations)}
         </ul>
@@ -35,18 +35,22 @@ function ItinerariesShow(props){
   function renderUsers(user) {
     return(
       <div>
-        <li key={user.id}>{user.username}</li>
+        <p key={user.id}>{user.username}</p>
       </div>
     )
   }
 
   return (
-    <div>
-      <h3>{itinerary.name}</h3>
-      User: {itinerary.users.map(renderUsers)}
-      <ul>
+    <div className="col-lg-8">
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h2 className="panel-title">
+            {itinerary.name}
+          </h2>
+        </div>
+        <p className="list-group-item">User(s): {itinerary.users.map(renderUsers)}</p>
         {itinerary.days.map(renderDays)}
-      </ul>
+      </div>
     </div>
   )
 
