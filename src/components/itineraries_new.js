@@ -12,10 +12,12 @@ class ItinerariesNew extends React.Component {
       itinerary: {
         name: "",
         days: [{
-          day: "",
+          day: 1,
           locations: [{
+            id: 1,
             city: "",
             activities: [{
+              id: 1,
               name: ""
             }]
           }]
@@ -24,39 +26,42 @@ class ItinerariesNew extends React.Component {
     }
     this.addDay = this.addDay.bind(this)
     this.addLocation = this.addLocation.bind(this)
-    this.newItineraryHandler = this.newItineraryHandler.bind(this)
-    this.updateDay = this.updateDay.bind(this)
-    this.updateLocation = this.updateLocation.bind(this)
-
+    this.addActivity = this.addActivity.bind(this)
+    // this.newItineraryHandler = this.newItineraryHandler.bind(this)
+    // this.updateDay = this.updateDay.bind(this)
+    // this.updateLocation = this.updateLocation.bind(this)
   }
 
-  newItineraryHandler(event) {
-    event.preventDefault();
-    const newItinerary = {
-      itinerary: {
-        name: this.refs["itinerary-name"].value,
-        days: [{
-          day: this.refs[{}].refs["day-name"].value,
-          locations: [{
-            city: this.refs[{}].refs[{}].refs["location-name"].value,
-            activities: [{
-              name: this.refs[{}].refs[{}].refs[{}].refs["activity-name"].value
-            }]
-          }]
-        }]
-      }
-    }
-    this.props.actions.createItinerary(newItinerary)
-  }
+  // newItineraryHandler(event) {
+  //   event.preventDefault();
+  //   const newItinerary = {
+  //     itinerary: {
+  //       name: this.refs["itinerary-name"].value,
+  //       days: [{
+  //         day: this.refs[{}].refs["day-name"].value,
+  //         locations: [{
+  //           city: this.refs[{}].refs[{}].refs["location-name"].value,
+  //           activities: [{
+  //             name: this.refs[{}].refs[{}].refs[{}].refs["activity-name"].value
+  //           }]
+  //         }]
+  //       }]
+  //     }
+  //   }
+  //   this.props.actions.createItinerary(newItinerary)
+  // }
 
-  addDay() {
+  addDay(event) {
+    event.preventDefault()
     const copyOfState = Object.assign({},this.state)
-
+    const dayLength = this.state.itinerary.days.length+1
     copyOfState.itinerary.days.push({
-      day: "",
+      day: dayLength,
       locations: [{
+        id: 1,
         city: "",
         activities: [{
+          id: "",
           name: ""
         }]
       }]
@@ -64,60 +69,54 @@ class ItinerariesNew extends React.Component {
     this.setState(copyOfState)
   }
 
-  addLocation(day) {
+  addLocation(event) {
+    const day = event.target.id
+    event.preventDefault()
     const copyOfState = Object.assign({},this.state)
-      // const dayNumber = day.day
-    // const dayToAddLocation = copyOfState.itinerary.days.map((day) => {
-    //   if (day.day === dayNumber) {
-    //     return day
-    //   }})
-
-    copyOfState.itinerary.days[0].locations.push({
+    const locationLength = this.state.itinerary.days[day-1].locations.length+1
+    copyOfState.itinerary.days[day-1].locations.push({
+      id: locationLength,
       city: "",
       activities: [{
+        id: 1,
         name: ""
       }]
     })
+    this.setState(copyOfState)
   }
 
-  addActivity(location) {
+  addActivity(event) {
+    const location = event.target.id
+    const day = event.target.id-1
+    event.preventDefault()
     const copyOfState = Object.assign({},this.state)
-      // const dayNumber = day.day
-    // const dayToAddLocation = copyOfState.itinerary.days.map((day) => {
-    //   if (day.day === dayNumber) {
-    //     return day
-    //   }})
+      debugger;
+    const activitiesLength = this.state.itinerary.days[day-1].locations[location-1].activities.length+1
 
-    copyOfState.itinerary.days[0].locations[0].activities.push({
+    copyOfState.itinerary.days[day-1].locations[location-1].activities.push({
+      id: activitiesLength,
       name: ""
     })
-  }
-
-  updateDay(value) {
-
-    const copyOfState = Object.assign({},this.state)
-    copyOfState.itinerary.days[0].day.location = event.target.value
     this.setState(copyOfState)
   }
 
-  updateLocation(event) {
-    const copyOfState = Object.assign({},this.state)
-    copyOfState.itinerary.days[0].day.location = event.target.value
-    this.setState(copyOfState)
-    // this.setState({
-    //   itinerary: Object.assign({}, this.state.itinerary, {
-    //     days: Object.assign([{}], this.state.days, [{
-    //       day: event.target.value
-    //     }])
-    //   })
-    // })
-  }
+  // updateDay(value) {
+  //
+  //   const copyOfState = Object.assign({},this.state)
+  //   copyOfState.itinerary.days[0].day.location = event.target.value
+  //   this.setState(copyOfState)
+  // }
+
+  // updateLocation(event) {
+  //   const copyOfState = Object.assign({},this.state)
+  //   copyOfState.itinerary.days[0].day.location = event.target.value
+  //   this.setState(copyOfState)
+  //
+  // }
 
   collectDayForm() {
-    const dayNumber = this.state.itinerary.days.length
-
     return this.state.itinerary.days.map((day) => {
-      return <DayForm day={day} addDay={this.addDay} updateDay={this.updateDay} value={dayNumber} addLocation={this.addLocation} updateLocation={this.updateLocation} ref={this.refs} />
+      return <div>Day {day.day}<DayForm day={day} addLocation={this.addLocation} addActivity={this.addActivity} ref={this.refs} /></div>
     })
   }
 
@@ -126,14 +125,18 @@ class ItinerariesNew extends React.Component {
   render() {
     const dayFormElements = this.collectDayForm()
     return(
-      <div>
-        <form onSubmit={this.newItineraryHandler}>
-          <label>Itinerary Name:</label>
-          <input type="text" ref="itinerary-name" />
-          <br></br>
-          {dayFormElements}
-          <input type="submit" />
-        </form>
+      <div className="col-lg-4">
+        <div className="panel panel-default">
+          <form >
+            <div className="panel-heading">
+            <label>Itinerary Name:</label>
+            <input type="text" ref="itinerary-name" />
+            </div>
+            <button onClick={this.addDay}>+ Date</button>
+            {dayFormElements}
+            <input type="submit" />
+          </form>
+        </div>
       </div>
     )
   }
