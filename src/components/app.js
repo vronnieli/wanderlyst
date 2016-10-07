@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import '../App.css';
 import SearchBar from './search_bar'
 import {Link} from 'react-router';
+import HTML5Backend from 'react-dnd-html5-backend';
+import {compose} from 'redux';
+import {DragDropContext} from 'react-dnd';
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +27,7 @@ class App extends Component {
 }
 
 export default App;
+// export default DragDropContext(HTML5Backend)(App);
 
 
 // <div className="App">

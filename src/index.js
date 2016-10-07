@@ -9,8 +9,10 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise'
 import rootReducer from './reducers';
 import { fetchItineraries } from './actions'
-import { Motion, spring } from 'react-motion';
-import isEqual from 'lodash.isequal';
+// import { Motion, spring } from 'react-motion';
+// import isEqual from 'lodash.isequal';
+import HTML5Backend from 'react-dnd-html5-backend';
+
 
 const store = createStore(rootReducer, applyMiddleware(ReduxPromise));
 

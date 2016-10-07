@@ -6,6 +6,7 @@ import ItinerariesIndex from './components/itineraries_index'
 import ItinerariesNew from './components/itineraries_new'
 import ItinerariesShow from './components/itineraries_show'
 
+
 export default (
   <Route>
     <Route path="/" component={App} >
