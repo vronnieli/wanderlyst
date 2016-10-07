@@ -13,7 +13,7 @@ function ItinerariesIndex(props){
   function renderLocations(location) {
     return(
       <div draggable="true" className="list-group-item">
-        <strong>City: </strong>{location.city}
+        <p key={location.id}>{location.city}</p>
         <ul>
           {location.activities.map(renderActivities)}
         </ul>
@@ -24,7 +24,7 @@ function ItinerariesIndex(props){
   function renderDays(day) {
     return(
       <div draggable="true" className="list-group-item">
-        <strong>Day {day.day}</strong>
+        <h4 key={day.id}>Day {day.day}</h4>
         <ul>
           {day.locations.map(renderLocations)}
         </ul>
