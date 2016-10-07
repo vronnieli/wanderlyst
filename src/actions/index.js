@@ -53,3 +53,18 @@ export function createItinerary(params){
     payload: itinerary
   }
 }
+
+// export function createDays(params){
+//   const day = fetch(`${BASE_URL}api/v1/days`, {
+//     method: 'POST',
+//     body: JSON.stringify(params),
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     }
+//   })
+//   return {
+//     type: 'CREATE_DAYS',
+//     payload: day
+//   }
+// }

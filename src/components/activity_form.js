@@ -1,9 +1,7 @@
 import React from 'react';
 
 class ActivityForm extends React.Component {
-  debugger;
   constructor(props){
-    debugger;
     super(props);
     this.addActivity = this.addActivity.bind(this)
   }
@@ -22,7 +20,6 @@ class ActivityForm extends React.Component {
       </div>
     )
   }
-
 }
 
 export default ActivityForm

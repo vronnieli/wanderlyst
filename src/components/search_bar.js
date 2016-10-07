@@ -22,14 +22,19 @@ class SearchBar extends React.Component{
 
   render(){
   return (
-    <nav className="navbar navbar-inverse">
-      <form className="form-inline" onSubmit={this.onSubmitHandler} >
-        <input type="text" placeholder="city" ref="location"/>
-        <input type="number" placeholder="number of days" ref="days"/>
-        <input type="text" placeholder="activity" ref="activity"/>
-        <input type="submit" />
+      <form className="navbar navbar-inverse navbar-static-top well well-lg" role="search" onSubmit={this.onSubmitHandler} >
+        <div className="container-fluid form-inline">
+
+          <input type="text" className="form-control" placeholder="city" ref="location"/>
+
+          <input type="number" className="form-control" placeholder="number of days" ref="days"/>
+
+          <input type="text" className="form-control" placeholder="activity" ref="activity"/>
+
+          <button type="submit" class="btn btn-default">Search</button>
+          
+        </div>
       </form>
-    </nav>
     )
   }
 }

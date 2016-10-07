@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router'
 
 function ItinerariesIndex(props){
 
@@ -12,8 +13,8 @@ function ItinerariesIndex(props){
   function renderLocations(location) {
     return(
       <div>
-        <li key={location.id}>{location.city}</li>
         <ul>
+        <strong>City: </strong>{location.city}
           {location.activities.map(renderActivities)}
         </ul>
       </div>
@@ -22,31 +23,31 @@ function ItinerariesIndex(props){
 
   function renderDays(day) {
     return(
-      <div>
-        <li key={day.id}>Day {day.day}</li>
-        <ul>
-          {day.locations.map(renderLocations)}
-        </ul>
+      <div className="list-group-item">
+        <strong>Day {day.day}</strong>
+        {day.locations.map(renderLocations)}
       </div>
     )
   }
 
   function renderItineraries(itinerary) {
     return (
-      <div>
-        <li key={itinerary.id}>{itinerary.name}</li>
-        <ul>
-          {itinerary.days.map(renderDays)}
-        </ul>
+      <div className="col-lg-4">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">
+              <Link to={`/itineraries/${itinerary.id}`}>{itinerary.name}</Link>
+            </h3>
+          </div>
+            {itinerary.days.map(renderDays)}
+        </div>
       </div>
     )
   }
 
   return (
     <div>
-      <ul>
-        {props.itineraries.map(renderItineraries)}
-      </ul>
+      {props.itineraries.map(renderItineraries)}
     </div>
   )
 }
