@@ -3,19 +3,15 @@ import React from 'react';
 class ActivityForm extends React.Component {
   constructor(props){
     super(props);
-    // this.addActivity = this.addActivity.bind(this)
   }
 
-
-  // addActivity(event) {
-  //   event.preventDefault();
-  //   this.props.addActivity(this.props.location);
-  // }
-
   render(){
+    const location = this.props.location.id
+    const day = this.props.day.day
+    const activity = this.props.activity.id
     return(
       <div>
-        <input type="text" ref="activity-name"/>
+        <input type="text" ref="activity-name" onChange={this.props.updateActivity} id={location} name={day} alt={activity}/>
       </div>
     )
   }

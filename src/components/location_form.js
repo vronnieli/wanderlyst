@@ -8,10 +8,9 @@ class LocationForm extends React.Component {
   }
 
   collectActivityForm() {
-    // const dayNumber = this.state.itinerary.days.length
     const location = this.props.location
     return this.props.location.activities.map((activity) => {
-      return <ActivityForm activity={activity} addActivity={this.props.addActivity} location={this.props.location} day={this.props.day} ref={this.refs} />
+      return <ActivityForm activity={activity} addActivity={this.props.addActivity} location={this.props.location} day={this.props.day} updateActivity={this.props.updateActivity} ref={this.refs} />
     })
   }
 
@@ -21,10 +20,12 @@ class LocationForm extends React.Component {
   const day = this.props.day.day
     return(
       <div>
-        <input type="text" ref="location-city"/>
+        <input type="text" ref="location-city" onChange={this.props.updateLocation} id={location} name={day}/>
         <br/>
         <button onClick={this.props.addActivity} id={location} name={day}>+ Activity</button>
-        {activityFormElements}
+        <div className="panel-group">
+          {activityFormElements}
+        </div>
       </div>
     )
   }

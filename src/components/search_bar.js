@@ -11,7 +11,10 @@ const SearchBar = function(props) {
   }
 
   return (
-    <nav className="navbar navbar-inverse">
+    <nav className="navbar navbar-default navbar-fixed-top topnav">
+      <div className="navbar-brand topnav">
+      wanderlyst
+      </div>
       <form className="form-inline" onSubmit={onSubmitHandler.bind(this)}>
         <label color="white">Search:</label>
         <input type="text" placeholder="city"/>
