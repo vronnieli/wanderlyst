@@ -2,8 +2,9 @@
   "name": "wanderlyst",
   "version": "0.1.0",
   "private": true,
+  "react-scripts": "0.6.1",
   "devDependencies": {
-    "react-scripts": "0.6.1"
+
   },
   "dependencies": {
     "babel-core": "^6.17.0",
@@ -15,7 +16,7 @@
     "redux-promise": "^0.5.3"
   },
   "scripts": {
-    "start": "./node_modules/.bin/react-scripts index.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
