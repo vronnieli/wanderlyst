@@ -4,28 +4,46 @@ import {Link} from 'react-router'
 
 function ItinerariesIndex(props){
 
+  // function allowDrop(event) {
+  //     event.preventDefault();
+  // }
+  //
+  // function drag(event) {
+  //     event.dataTransfer.setData("text", event.target.id);
+  // }
+  //
+  // function drop(event) {
+  //     event.prevententDefault();
+  //     var data = event.dataTransfer.getData("text");
+  //     event.target.appendChild(document.getElementById(data));
+  // }
+
   function renderActivities(activity) {
     return(
-        <li key={activity.id}>{activity.name}</li>
+        <p className="list-group-item" key={activity.id}>{activity.name}</p>
     )
   }
 
+      // <div draggable="true" ondragstart={this.drag} className="list-group-item">
   function renderLocations(location) {
     return(
-      <div>
+      <div draggable="true" className="list-group-item">
+        <p key={location.id}>{location.city}</p>
         <ul>
-        <strong>City: </strong>{location.city}
           {location.activities.map(renderActivities)}
         </ul>
       </div>
     )
   }
 
+      // <div ondrop={this.drop} ondragover={this.allowDrop} className="list-group-item">
   function renderDays(day) {
     return(
       <div className="list-group-item">
-        <strong>Day {day.day}</strong>
-        {day.locations.map(renderLocations)}
+        <h4 key={day.id}>Day {day.day}</h4>
+        <ul>
+          {day.locations.map(renderLocations)}
+        </ul>
       </div>
     )
   }
