@@ -11,22 +11,17 @@ const SearchBar = function(props) {
   }
 
   return (
-    <nav className="navbar navbar-inverse">
-      <div className="col-lg-8">
-        <form className="navbar-form" onSubmit={onSubmitHandler.bind(this)}>
-          <label color="white">Search:</label>
-          <input type="text" placeholder="city"/>
-          <input type="number" placeholder="number of days"/>
-          <input type="text" placeholder="activity"/>
-          <input type="submit" />
-        </form>
+    <nav className="navbar navbar-default navbar-fixed-top topnav">
+      <div className="navbar-brand topnav">
+      wanderlyst
       </div>
-      {/* <div className="col-lg-2">
-        <a href="/itineraries">All Itineraries</a>
-      </div>
-      <div className="col-lg-2">
-        <a href="/itineraries/new">Create An Itinerary</a>
-      </div> */}
+      <form className="form-inline" onSubmit={onSubmitHandler.bind(this)}>
+        <label color="white">Search:</label>
+        <input type="text" placeholder="city"/>
+        <input type="number" placeholder="number of days"/>
+        <input type="text" placeholder="activity"/>
+        <input type="submit" />
+      </form>
     </nav>
   )
 }
