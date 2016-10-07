@@ -31,6 +31,7 @@ class ItinerariesNew extends React.Component {
     this.updateItineraryName = this.updateItineraryName.bind(this)
     this.updateLocation = this.updateLocation.bind(this)
     this.updateActivity = this.updateActivity.bind(this)
+    this.deleteDay = this.deleteDay.bind(this)
   }
 
   // newItineraryHandler(event) {
@@ -67,6 +68,15 @@ class ItinerariesNew extends React.Component {
         }]
       }]
     })
+    this.setState(copyOfState)
+  }
+
+  deleteDay(event) {
+    event.preventDefault()
+    const copyOfState = Object.assign({},this.state)
+    const day = event.target.id
+    copyOfState.itinerary.days.splice(day-1,1)
+    copyOfState.itinerary.days.map((day,index) => {return day.day = index+1})
     this.setState(copyOfState)
   }
 
@@ -126,7 +136,17 @@ class ItinerariesNew extends React.Component {
 
   collectDayForm() {
     return this.state.itinerary.days.map((day) => {
-      return <div className="panel panel-default"><div className="panel-heading">Day {day.day}</div><div id="collapseOne" className="panel-collapse collapse in"><div className="panel-body"><DayForm day={day} addLocation={this.addLocation} addActivity={this.addActivity} updateLocation={this.updateLocation} updateActivity={this.updateActivity} ref={this.refs} /></div></div></div>
+      return <div className="panel panel-default">
+        <div className="panel-heading">
+          Day {day.day}
+          <button onClick={this.deleteDay} id={day.day}>Delete</button>
+        </div>
+        <div id="collapseOne" className="panel-collapse collapse in">
+          <div className="panel-body">
+            <DayForm day={day} addLocation={this.addLocation} addActivity={this.addActivity} updateLocation={this.updateLocation} updateActivity={this.updateActivity} ref={this.refs} />
+          </div>
+        </div>
+      </div>
     })
   }
 
