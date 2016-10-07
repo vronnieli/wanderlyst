@@ -27,7 +27,7 @@ class ItinerariesNew extends React.Component {
     this.addDay = this.addDay.bind(this)
     this.addLocation = this.addLocation.bind(this)
     this.addActivity = this.addActivity.bind(this)
-    // this.newItineraryHandler = this.newItineraryHandler.bind(this)
+    this.newItineraryHandler = this.newItineraryHandler.bind(this)
     this.updateItineraryName = this.updateItineraryName.bind(this)
     this.updateLocation = this.updateLocation.bind(this)
     this.updateActivity = this.updateActivity.bind(this)
@@ -36,24 +36,26 @@ class ItinerariesNew extends React.Component {
     this.deleteActivity = this.deleteActivity.bind(this)
   }
 
-  // newItineraryHandler(event) {
-  //   event.preventDefault();
-  //   const newItinerary = {
-  //     itinerary: {
-  //       name: this.refs["itinerary-name"].value,
-  //       days: [{
-  //         day: this.refs[{}].refs["day-name"].value,
-  //         locations: [{
-  //           city: this.refs[{}].refs[{}].refs["location-name"].value,
-  //           activities: [{
-  //             name: this.refs[{}].refs[{}].refs[{}].refs["activity-name"].value
-  //           }]
-  //         }]
-  //       }]
-  //     }
-  //   }
-  //   this.props.actions.createItinerary(newItinerary)
-  // }
+  newItineraryHandler(event) {
+    // debugger;
+    event.preventDefault();
+    // const newItinerary = {
+    //   itinerary: {
+    //     name: this.refs["itinerary-name"].value,
+    //     days: [{
+    //       day: this.refs[{}].refs["day-name"].value,
+    //       locations: [{
+    //         city: this.refs[{}].refs[{}].refs["location-name"].value,
+    //         activities: [{
+    //           name: this.refs[{}].refs[{}].refs[{}].refs["activity-name"].value
+    //         }]
+    //       }]
+    //     }]
+    //   }
+    // }
+    // this.props.actions.createItinerary(newItinerary)
+    this.props.actions.createItinerary(this.state)
+  }
 
   addDay(event) {
     event.preventDefault()
@@ -65,7 +67,7 @@ class ItinerariesNew extends React.Component {
         id: 1,
         city: "",
         activities: [{
-          id: "",
+          id: 1,
           name: ""
         }]
       }]
@@ -179,7 +181,7 @@ class ItinerariesNew extends React.Component {
     return(
       <div className="col-lg-8">
         <div className="panel panel-default">
-          <form>
+          <form onSubmit={this.newItineraryHandler}>
             <div className="panel-heading">
               <div className="form-inline">
                 <label>Itinerary Name:</label>

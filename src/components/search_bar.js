@@ -1,34 +1,50 @@
 import React from 'react';
-import * as actions from '../actions/index'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
+import * as actions from '../actions/index';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
-const SearchBar = function(props) {
-  function onSubmitHandler(event){
+class SearchBar extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.onSubmitHandler = this.onSubmitHandler.bind(this)
+  }
+
+  onSubmitHandler(event){
     event.preventDefault();
-    props.actions.searchedItineraries(event.target.children[1].value)
+    this.props.actions.searchedItineraries({
+      location: this.refs.location.value,
+      days: this.refs.days.value,
+      activity: this.refs.activity.value
+    })
     event.target.children[1].value = ""
   }
 
+  render(){
   return (
-    <nav className="navbar navbar-default navbar-fixed-top topnav">
+    <nav className="navbar navbar-default navbar-static-top topnav">
       <div className="navbar-brand topnav">
-      wanderlyst
+        <strong>
+          wanderlyst
+        </strong>
       </div>
-      <form className="form-inline" onSubmit={onSubmitHandler.bind(this)}>
-        <label color="white">Search:</label>
-        <input type="text" placeholder="city"/>
-        <input type="number" placeholder="number of days"/>
-        <input type="text" placeholder="activity"/>
-        <input type="submit" />
+      <form className="form-inline well-sm" onSubmit={this.onSubmitHandler}>
+
+        <input type="text" className="form-control" placeholder="search city..." ref="location"/>
+        <input type="number" className="form-control" placeholder="number of days..." ref="days"/>
+        <input type="text" className="form-control" placeholder="activity..." ref="activity"/>
+        <button type="submit" class="btn btn-default">Search</button>
       </form>
     </nav>
-  )
+    )
+  }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions,dispatch)}
-}
+function mapDispatchToProps(dispatch){
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+};
 
-const componentCreator = connect(null, mapDispatchToProps)
-export default componentCreator(SearchBar)
+const componentCreator = connect(null, mapDispatchToProps);
+export default componentCreator(SearchBar);
