@@ -9,8 +9,13 @@ class LocationForm extends React.Component {
 
   collectActivityForm() {
     const location = this.props.location
+    const day = this.props.day
     return this.props.location.activities.map((activity) => {
-      return <ActivityForm activity={activity} addActivity={this.props.addActivity} location={this.props.location} day={this.props.day} updateActivity={this.props.updateActivity} ref={this.refs} />
+      return <div className="panel panel-default">
+        <label>Activity</label>
+        <ActivityForm activity={activity} addActivity={this.props.addActivity} location={this.props.location} day={this.props.day} updateActivity={this.props.updateActivity} ref={this.refs} />
+        <button onClick={this.props.deleteActivity} id={location.id} name={day.day} value={activity.id}>Delete</button>
+      </div>
     })
   }
 

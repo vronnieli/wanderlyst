@@ -5,7 +5,6 @@ import App from './components/app';
 import ItinerariesIndex from './components/itineraries_index'
 import ItinerariesNew from './components/itineraries_new'
 import ItinerariesShow from './components/itineraries_show'
-// import ItineraryFormPreset from './components/itinerary_form_preset'
 
 export default (
   <Route>
