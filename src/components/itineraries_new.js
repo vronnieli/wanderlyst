@@ -32,6 +32,7 @@ class ItinerariesNew extends React.Component {
     this.updateLocation = this.updateLocation.bind(this)
     this.updateActivity = this.updateActivity.bind(this)
     this.deleteDay = this.deleteDay.bind(this)
+    this.deleteLocation = this.deleteLocation.bind(this)
   }
 
   // newItineraryHandler(event) {
@@ -96,6 +97,16 @@ class ItinerariesNew extends React.Component {
     this.setState(copyOfState)
   }
 
+  deleteLocation(event) {
+    event.preventDefault()
+    const copyOfState = Object.assign({},this.state)
+    const location = event.target.id
+    const day = event.target.name
+    copyOfState.itinerary.days[day-1].locations.splice(location-1,1)
+    copyOfState.itinerary.days[day-1].locations.map((location,index) => {return location.id = index+1})
+    this.setState(copyOfState)
+  }
+
   addActivity(event) {
     const location = event.target.id
     const day = event.target.name
@@ -143,7 +154,7 @@ class ItinerariesNew extends React.Component {
         </div>
         <div id="collapseOne" className="panel-collapse collapse in">
           <div className="panel-body">
-            <DayForm day={day} addLocation={this.addLocation} addActivity={this.addActivity} updateLocation={this.updateLocation} updateActivity={this.updateActivity} ref={this.refs} />
+            <DayForm day={day} addLocation={this.addLocation} addActivity={this.addActivity} updateLocation={this.updateLocation} updateActivity={this.updateActivity} deleteLocation={this.deleteLocation} ref={this.refs} />
           </div>
         </div>
       </div>
