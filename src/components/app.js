@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <SearchBar/>
+        <SearchBar/><br /><br /><br />
         <Link to="/itineraries">All Itineraries</Link>
         <br />
         <Link to="/itineraries/new">Create An Itinerary</Link>

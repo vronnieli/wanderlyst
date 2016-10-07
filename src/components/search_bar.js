@@ -1,7 +1,7 @@
 import React from 'react';
-import * as actions from '../actions/index'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
+import * as actions from '../actions/index';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
 class SearchBar extends React.Component{
   constructor(props){
@@ -22,26 +22,29 @@ class SearchBar extends React.Component{
 
   render(){
   return (
-      <form className="navbar navbar-inverse navbar-static-top well well-lg" role="search" onSubmit={this.onSubmitHandler} >
-        <div className="container-fluid form-inline">
+    <nav className="navbar navbar-default navbar-static-top topnav">
+      <div className="navbar-brand topnav">
+        <strong>
+          wanderlyst
+        </strong>
+      </div>
+      <form className="form-inline well-sm" onSubmit={this.onSubmitHandler}>
 
-          <input type="text" className="form-control" placeholder="city" ref="location"/>
-
-          <input type="number" className="form-control" placeholder="number of days" ref="days"/>
-
-          <input type="text" className="form-control" placeholder="activity" ref="activity"/>
-
-          <button type="submit" class="btn btn-default">Search</button>
-          
-        </div>
+        <input type="text" className="form-control" placeholder="search city..." ref="location"/>
+        <input type="number" className="form-control" placeholder="number of days..." ref="days"/>
+        <input type="text" className="form-control" placeholder="activity..." ref="activity"/>
+        <button type="submit" class="btn btn-default">Search</button>
       </form>
+    </nav>
     )
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {actions: bindActionCreators(actions,dispatch)}
-}
+function mapDispatchToProps(dispatch){
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+};
 
-const componentCreator = connect(null, mapDispatchToProps)
-export default componentCreator(SearchBar)
+const componentCreator = connect(null, mapDispatchToProps);
+export default componentCreator(SearchBar);
