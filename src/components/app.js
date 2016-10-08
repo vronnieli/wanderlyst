@@ -15,11 +15,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <SearchBar/><br /><br /><br />
-        <Link to="/itineraries" onClick={this.props.actions.fetchItineraries}>All Itineraries</Link>
-        <br />
-        <Link to="/itineraries/new">Create An Itinerary</Link>
-        <br />
+        <SearchBar/>
         {this.props.children}
       </div>
     );

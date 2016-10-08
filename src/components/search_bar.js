@@ -28,9 +28,28 @@ class SearchBar extends React.Component{
   }
   sessionBasedLink(){
     if (sessionStorage.jwt == undefined) {
-      return(<Link to="/login">Log In</Link>)
+      return(
+        <div className="navbar-brand topnav">
+          <strong>
+            <Link to="/login">Log In</Link>
+          </strong>
+        </div>
+      )
     } else {
-      return(<Link onClick={this.onLogOutHandler}>Log Out</Link>)
+      return(
+        <div>
+          <div className="navbar-brand topnav">
+            <strong>
+              <Link onClick={this.onLogOutHandler}>Log Out</Link>
+            </strong>
+          </div>
+          <div className="navbar-brand topnav">
+            <strong>
+              <Link to="/itineraries/new">Create An Itinerary</Link>
+            </strong>
+          </div>
+        </div>
+      )
     }
   }
 
@@ -42,6 +61,12 @@ class SearchBar extends React.Component{
           wanderlyst
         </strong>
       </div>
+      {this.sessionBasedLink()}
+      <div className="navbar-brand topnav">
+        <strong>
+          <Link to="/itineraries" onClick={this.props.actions.fetchItineraries}>All Itineraries</Link>
+        </strong>
+      </div>
       <form className="form-inline well-sm" onSubmit={this.onSubmitHandler}>
 
         <input type="text" className="form-control" placeholder="search city..." ref="location"/>
@@ -49,9 +74,6 @@ class SearchBar extends React.Component{
         <input type="text" className="form-control" placeholder="activity..." ref="activity"/>
         <button type="submit" className="btn btn-default">Search</button>
       </form>
-      {this.sessionBasedLink()}
-      {/* <Link to="/login">Log In</Link> */}
-      {/* <Link onClick={this.onLogOutHandler}>Log Out</Link> */}
     </nav>
     )
   }
