@@ -2,12 +2,14 @@ import React from 'react';
 import * as actions from '../actions/index';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 
 class SearchBar extends React.Component{
   constructor(props){
     super(props);
 
     this.onSubmitHandler = this.onSubmitHandler.bind(this)
+    this.onLogOutHandler = this.onLogOutHandler.bind(this)
   }
 
   onSubmitHandler(event){
@@ -18,6 +20,18 @@ class SearchBar extends React.Component{
       activity: this.refs.activity.value
     })
     event.target.children[1].value = ""
+  }
+
+  onLogOutHandler(event) {
+    event.preventDefault();
+    this.props.actions.logOutUser();
+  }
+  sessionBasedLink(){
+    if (sessionStorage.jwt == undefined) {
+      return(<Link to="/login">Log In</Link>)
+    } else {
+      return(<Link onClick={this.onLogOutHandler}>Log Out</Link>)
+    }
   }
 
   render(){
@@ -33,8 +47,11 @@ class SearchBar extends React.Component{
         <input type="text" className="form-control" placeholder="search city..." ref="location"/>
         <input type="number" className="form-control" placeholder="number of days..." ref="days"/>
         <input type="text" className="form-control" placeholder="activity..." ref="activity"/>
-        <button type="submit" class="btn btn-default">Search</button>
+        <button type="submit" className="btn btn-default">Search</button>
       </form>
+      {this.sessionBasedLink()}
+      {/* <Link to="/login">Log In</Link> */}
+      {/* <Link onClick={this.onLogOutHandler}>Log Out</Link> */}
     </nav>
     )
   }

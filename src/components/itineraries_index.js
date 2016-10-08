@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router'
 
 function ItinerariesIndex(props){
-// debugger
   // function allowDrop(event) {
   //     event.preventDefault();
   // }

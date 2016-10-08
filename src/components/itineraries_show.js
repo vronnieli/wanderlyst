@@ -48,7 +48,7 @@ function ItinerariesShow(props){
             {itinerary.name}
           </h2>
         </div>
-        <p className="list-group-item">User(s): {itinerary.users.map(renderUsers)}</p>
+        <div className="list-group-item">User(s): {itinerary.users.map(renderUsers)}</div>
         {itinerary.days.map(renderDays)}
       </div>
     </div>
