@@ -40,12 +40,16 @@ class SearchBar extends React.Component{
         <div>
           <div className="navbar-brand topnav">
             <strong>
-              <Link onClick={this.onLogOutHandler}>Log Out</Link>
+              <Link onClick={this.onLogOutHandler}>
+                Log Out
+              </Link>
             </strong>
           </div>
           <div className="navbar-brand topnav">
             <strong>
-              <Link to="/itineraries/new">Create An Itinerary</Link>
+              <Link to="/itineraries/new">
+                Create An Itinerary
+              </Link>
             </strong>
           </div>
         </div>
@@ -58,13 +62,17 @@ class SearchBar extends React.Component{
     <nav className="navbar navbar-default navbar-static-top topnav">
       <div className="navbar-brand topnav">
         <strong>
-          wanderlyst
+          <Link to="/">
+            wanderlyst
+          </Link>
         </strong>
       </div>
       {this.sessionBasedLink()}
       <div className="navbar-brand topnav">
         <strong>
-          <Link to="/itineraries" onClick={this.props.actions.fetchItineraries}>All Itineraries</Link>
+          <Link to="/itineraries" onClick={this.props.actions.fetchItineraries}>
+            All Itineraries
+          </Link>
         </strong>
       </div>
       <form className="form-inline well-sm" onSubmit={this.onSubmitHandler}>
