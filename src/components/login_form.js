@@ -32,15 +32,20 @@ class LogInForm extends React.Component {
       <div className="col-lg-3">
         <div className="panel panel-default">
           <div className="panel-heading">
-            <div className="form-inline">
-              <form onSubmit={this.onSave}>
-                <label>Username:</label>
-                <input type="text" name="username" onChange={this.onChangeHandler} value={this.state.credentials.username} /><br></br>
-                <label>Password:</label>
-                <input type="password" name="password" onChange={this.onChangeHandler} value={this.state.credentials.password} />
-                <input type="submit" />
-              </form>
-            </div>
+            <h2 className="panel-title">
+              Log In
+            </h2>
+          </div>
+          <div className="form-inline">
+            <form onSubmit={this.onSave}>
+              <label>Username:</label>
+              <input type="text" name="username" onChange={this.onChangeHandler} value={this.state.credentials.username} />
+              <br />
+              <label>Password:</label>
+              <input type="password" name="password" onChange={this.onChangeHandler} value={this.state.credentials.password} />
+              <br />
+              <input type="submit" />
+            </form>
           </div>
         </div>
       </div>

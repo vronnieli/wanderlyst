@@ -34,21 +34,29 @@ class SignUpForm extends React.Component {
       <div className="col-lg-3">
         <div className="panel panel-default">
           <div className="panel-heading">
-            <div className="form-inline">
-              <form onSubmit={this.newUserHandler}>
-                <label>First Name:</label>
-                <input type="text" name="firstName" onChange={this.onChangeHandler} value={this.state.user.firstName} />
-                <label>Last Name:</label>
-                <input type="text" name="lastName" onChange={this.onChangeHandler} value={this.state.user.lastName} />
-                <label>Email:</label>
-                <input type="text" name="email" onChange={this.onChangeHandler} value={this.state.user.email} />
-                <label>Username:</label>
-                <input type="text" name="username" onChange={this.onChangeHandler} value={this.state.user.username} />
-                <label>Password:</label>
-                <input type="password" name="password" onChange={this.onChangeHandler} value={this.state.user.password} />
-                <input type="submit" />
-              </form>
-            </div>
+            <h2 className="panel-title">
+              Sign Up
+            </h2>
+          </div>
+          <div className="form-inline">
+            <form onSubmit={this.newUserHandler}>
+              <label>First Name:</label>
+              <input type="text" name="firstName" onChange={this.onChangeHandler} value={this.state.user.firstName} />
+              <br />
+              <label>Last Name:</label>
+              <input type="text" name="lastName" onChange={this.onChangeHandler} value={this.state.user.lastName} />
+              <br />
+              <label>Email:</label>
+              <input type="text" name="email" onChange={this.onChangeHandler} value={this.state.user.email} />
+              <br />
+              <label>Username:</label>
+              <input type="text" name="username" onChange={this.onChangeHandler} value={this.state.user.username} />
+              <br />
+              <label>Password:</label>
+              <input type="password" name="password" onChange={this.onChangeHandler} value={this.state.user.password} />
+              <br />
+              <input type="submit" />
+            </form>
           </div>
         </div>
       </div>
