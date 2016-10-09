@@ -48,7 +48,7 @@ function ItinerariesIndex(props){
   }
 
   function renderItineraries(itinerary) {
-    debugger
+    // debugger
     return (
       <div >
         <div className="panel panel-default">

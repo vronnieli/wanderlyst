@@ -47,6 +47,7 @@ function ItinerariesShow(props){
           <h2 className="panel-title">
             {itinerary.name}
           </h2>
+          <button>{itinerary.upvotes} Upvotes</button>
         </div>
         <div className="list-group-item">User(s): {itinerary.users.map(renderUsers)}</div>
         {itinerary.days.map(renderDays)}
