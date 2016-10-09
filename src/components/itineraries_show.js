@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 
 function ItinerariesShow(props){
   const itinerary = props.itinerary
@@ -47,6 +48,10 @@ function ItinerariesShow(props){
           <h2 className="panel-title">
             {itinerary.name}
           </h2>
+          <Link to={`/itineraries/${itinerary.id}/update`}>
+            Update
+          </Link>
+          <br />
           <button>{itinerary.upvotes} Upvotes</button>
         </div>
         <div className="list-group-item">User(s): {itinerary.users.map(renderUsers)}</div>
