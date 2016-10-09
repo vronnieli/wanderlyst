@@ -4,7 +4,7 @@
   "private": true,
   "react-scripts": "0.6.1",
   "devDependencies": {
-
+    "react-scripts": "^0.6.1"
   },
   "dependencies": {
     "babel-core": "^6.17.0",
