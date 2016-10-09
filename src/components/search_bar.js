@@ -29,10 +29,17 @@ class SearchBar extends React.Component{
   sessionBasedLink(){
     if (sessionStorage.jwt == undefined) {
       return(
-        <div className="navbar-brand topnav">
-          <strong>
-            <Link to="/login">Log In</Link>
-          </strong>
+        <div>
+          <div className="navbar-brand topnav">
+            <strong>
+              <Link to="/login">Log In</Link>
+            </strong>
+          </div>
+          <div className="navbar-brand topnav">
+            <strong>
+              <Link to="/signup">Sign Up</Link>
+            </strong>
+          </div>
         </div>
       )
     } else {
