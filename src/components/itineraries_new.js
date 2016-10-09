@@ -11,6 +11,7 @@ class ItinerariesNew extends React.Component {
     this.state = {
       itinerary: {
         name: "",
+        upvotes: 0,
         days: [{
           day: 1,
           locations: [{

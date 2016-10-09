@@ -48,6 +48,7 @@ function ItinerariesIndex(props){
   }
 
   function renderItineraries(itinerary) {
+    debugger
     return (
       <div >
         <div className="panel panel-default">
@@ -55,6 +56,7 @@ function ItinerariesIndex(props){
             <h3 className="panel-title">
               <Link to={`/itineraries/${itinerary.id}`}>{itinerary.name}</Link>
             </h3>
+            <button>{itinerary.upvotes} Upvotes</button>
           </div>
             {itinerary.days.map(renderDays)}
         </div>

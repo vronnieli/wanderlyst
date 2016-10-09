@@ -67,6 +67,7 @@ function mapStateToProps(state, ownProps){
     return  {
       itinerary: {
         name: "",
+        upvotes: 0,
         users: [{
           username: "",
           first_name: "",
