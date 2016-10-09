@@ -13,9 +13,9 @@ export default (
     <Route path="/" component={App} >
       <Route path="/login" component={LoginForm} />
       <Route path="/signup" component={SignUpForm} />
-      <Route path="/itineraries" component={ ItinerariesIndex } onEnter={requireAuth} >
-        <Route path="/itineraries/new" component={ ItinerariesNew } />
-        <Route path="/itineraries/:id" component={ ItinerariesShow } />
+      <Route path="/itineraries" component={ItinerariesIndex} onEnter={requireAuth} >
+        <Route path="/itineraries/new" component={ItinerariesNew} />
+        <Route path="/itineraries/:id" component={ItinerariesShow} />
       </Route>
     </Route>
   </Route>

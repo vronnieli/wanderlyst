@@ -7,7 +7,7 @@ class SignUpForm extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      credentials: {
+      user: {
         username: "",
         firstName: "",
         lastName: "",
@@ -15,12 +15,19 @@ class SignUpForm extends React.Component {
         password: ""
       }
     }
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.newUserHandler = this.newUserHandler.bind(this);
   }
   onChangeHandler(event) {
     const field = event.target.name;
-    const credentials = this.state.credentials;
-    credentials[field] = event.target.value;
-    return this.setState({credentials: credentials});
+    const user = this.state.user;
+    user[field] = event.target.value;
+    return this.setState({user: user});
+  }
+  newUserHandler(event) {
+    event.preventDefault();
+    debugger
+    this.props.actions.createUser(this.state)
   }
   render(){
     return(
@@ -28,17 +35,17 @@ class SignUpForm extends React.Component {
         <div className="panel panel-default">
           <div className="panel-heading">
             <div className="form-inline">
-              <form onSubmit={this.onSave}>
+              <form onSubmit={this.newUserHandler}>
                 <label>First Name:</label>
-                <input type="text" name="first-name" onChange={this.onChangeHandler} value={this.state.credentials.firstName} />
+                <input type="text" name="firstName" onChange={this.onChangeHandler} value={this.state.user.firstName} />
                 <label>Last Name:</label>
-                <input type="text" name="last-name" onChange={this.onChangeHandler} value={this.state.credentials.lastName} />
+                <input type="text" name="lastName" onChange={this.onChangeHandler} value={this.state.user.lastName} />
                 <label>Email:</label>
-                <input type="text" name="email" onChange={this.onChangeHandler} value={this.state.credentials.email} />
+                <input type="text" name="email" onChange={this.onChangeHandler} value={this.state.user.email} />
                 <label>Username:</label>
-                <input type="text" name="username" onChange={this.onChangeHandler} value={this.state.credentials.username} />
+                <input type="text" name="username" onChange={this.onChangeHandler} value={this.state.user.username} />
                 <label>Password:</label>
-                <input type="password" name="password" onChange={this.onChangeHandler} value={this.state.credentials.password} />
+                <input type="password" name="password" onChange={this.onChangeHandler} value={this.state.user.password} />
                 <input type="submit" />
               </form>
             </div>
