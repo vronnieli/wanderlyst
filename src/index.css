@@ -6,6 +6,14 @@ body {
      background-size: cover;
 }
 
+.right {
+    float: right;
+}
+
+.left {
+  float: left;
+}
+
 a {
   color: #777777;
   text-decoration: none;

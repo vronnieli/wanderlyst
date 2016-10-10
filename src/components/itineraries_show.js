@@ -47,14 +47,14 @@ function ItinerariesShow(props){
     <div className="col-lg-6">
       <div className="panel panel-default">
         <div className="panel-heading">
+          <button className="btn btn-default right">{itinerary.upvotes} Upvotes</button>
           <h2 className="panel-title">
             {itinerary.name}
           </h2>
-          <Link to={`/itineraries/${itinerary.id}/update`}>
+          <Link className="left" to={`/itineraries/${itinerary.id}/update`}>
             Update
           </Link>
           <br />
-          <button>{itinerary.upvotes} Upvotes</button>
         </div>
         <div className="list-group-item">User(s): {itinerary.users.map(renderUsers)}</div>
         {itinerary.days.map(renderDays)}

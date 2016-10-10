@@ -137,7 +137,7 @@ class ItinerariesUpdate extends React.Component {
       return <div className="panel panel-default">
         <div className="panel-heading">
           Day {day.day}
-          <button onClick={this.deleteDay} id={day.day}>Delete</button>
+          <button className="btn btn-default" onClick={this.deleteDay} id={day.day}>Delete</button>
         </div>
         <div id="collapseOne" className="panel-collapse collapse in">
           <div className="panel-body">
@@ -159,7 +159,7 @@ class ItinerariesUpdate extends React.Component {
                 <label>Itinerary Name:</label>
                 <input type="text" ref="itinerary-name" value={this.state.itinerary.name} onChange={this.updateItineraryName} />
               </div>
-              <button onClick={this.addDay}>+ Date</button>
+              <button className="btn btn-default" onClick={this.addDay}>+ Date</button>
             </div>
             <div className="panel-body">
               <div className="panel-group">

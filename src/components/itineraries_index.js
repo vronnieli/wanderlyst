@@ -53,11 +53,11 @@ function ItinerariesIndex(props){
       <div >
         <div className="panel panel-default">
           <div className="panel-heading">
+          <button className="btn btn-default right">{itinerary.upvotes} Upvotes</button>
             <h3 className="panel-title">
               <Link to={`/itineraries/${itinerary.id}`}>{itinerary.name}</Link>
-              <Link to={`/itineraries/${itinerary.id}/update`}>Update</Link>
             </h3>
-            <button>{itinerary.upvotes} Upvotes</button>
+              <Link to={`/itineraries/${itinerary.id}/update`}>Update</Link>
           </div>
             {itinerary.days.map(renderDays)}
         </div>

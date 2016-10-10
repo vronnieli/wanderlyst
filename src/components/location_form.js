@@ -25,7 +25,7 @@ class LocationForm extends React.Component {
   const location = this.props.location.id
   const day = this.props.day.day
     return(
-      <div>
+      <div className="activities">
         <input type="text" ref="location-city" onChange={this.props.updateLocation} id={location} name={day} value={this.props.location.city}/>
         <br/>
         <button className="btn btn-default" onClick={this.props.addActivity} id={location} name={day}>+ Activity</button>
