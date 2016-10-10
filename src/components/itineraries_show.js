@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 
 function ItinerariesShow(props){
+
   const itinerary = props.itinerary
 
   function renderActivities(activity) {
@@ -40,8 +41,8 @@ function ItinerariesShow(props){
       </div>
     )
   }
-  // debugger
-  window.itineraryProps = props.itinerary
+  //
+  // window.itineraryProps = props.itinerary
   return (
     <div className="col-lg-6">
       <div className="panel panel-default">

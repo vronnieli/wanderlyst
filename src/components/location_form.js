@@ -14,20 +14,21 @@ class LocationForm extends React.Component {
       return <div className="panel panel-default">
         <label>Activity</label>
         <ActivityForm activity={activity} addActivity={this.props.addActivity} location={this.props.location} day={this.props.day} updateActivity={this.props.updateActivity} ref={this.refs} />
-        <button onClick={this.props.deleteActivity} id={location.id} name={day.day} value={activity.id}>Delete</button>
+        <button className="btn btn-default" onClick={this.props.deleteActivity} id={location.id} name={day.day} value={activity.id}>Delete</button>
       </div>
     })
   }
 
   render(){
+
   const activityFormElements = this.collectActivityForm()
   const location = this.props.location.id
   const day = this.props.day.day
     return(
       <div>
-        <input type="text" ref="location-city" onChange={this.props.updateLocation} id={location} name={day}/>
+        <input type="text" ref="location-city" onChange={this.props.updateLocation} id={location} name={day} value={this.props.location.city}/>
         <br/>
-        <button onClick={this.props.addActivity} id={location} name={day}>+ Activity</button>
+        <button className="btn btn-default" onClick={this.props.addActivity} id={location} name={day}>+ Activity</button>
         <div className="panel-group">
           {activityFormElements}
         </div>

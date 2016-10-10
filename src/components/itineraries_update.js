@@ -9,17 +9,11 @@ import DayForm from './day_form'
 class ItinerariesUpdate extends React.Component {
   constructor(props){
     super(props)
-    debugger
+
     this.state = {
-      itinerary: {
-        name: window.itineraryProps.name,
-        upvotes: window.itineraryProps.upvotes,
-        days: window.itineraryProps.days.map(day => {
-          return {day: day}
-        })
-      }
+      itinerary: props.itinerary
     }
-    this.props.params.id
+    // this.props.params.id
     this.addDay = this.addDay.bind(this)
     this.addLocation = this.addLocation.bind(this)
     this.addActivity = this.addActivity.bind(this)
@@ -155,17 +149,66 @@ class ItinerariesUpdate extends React.Component {
   }
   render(){
     const dayFormElements = this.collectDayForm()
+
     return(
-      <div>
-        <ItinerariesNew />
+      <div className="col-lg-8">
+        <div className="panel panel-default">
+          <form onSubmit={this.updateItineraryHandler}>
+            <div className="panel-heading">
+              <div className="form-inline">
+                <label>Itinerary Name:</label>
+                <input type="text" ref="itinerary-name" value={this.state.itinerary.name} onChange={this.updateItineraryName} />
+              </div>
+              <button onClick={this.addDay}>+ Date</button>
+            </div>
+            <div className="panel-body">
+              <div className="panel-group">
+                {dayFormElements}
+              </div>
+            </div>
+            <input type="submit" />
+          </form>
+        </div>
       </div>
     )
   }
 }
 
+function mapStateToProps(state, ownProps){
+  const itinerary = state.itineraries.find(itinerary => itinerary.id == ownProps.params.id);
+  if (itinerary) {
+    return {
+      itinerary: itinerary
+    }
+  } else {
+    return  {
+      itinerary: {
+        name: "",
+        upvotes: 0,
+        users: [{
+          username: "",
+          first_name: "",
+          last_name: ""
+        }],
+        days: [{
+          day: "",
+          locations: [{
+            city: "",
+            activities: [{
+              name: ""
+            }]
+          }]
+        }]
+      }
+    }
+  }
+}
+
+// export default connect(mapStateToProps)(ItinerariesShow)
+
 function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
-const componentCreator = connect(null, mapDispatchToProps)
+const componentCreator = connect(mapStateToProps, mapDispatchToProps)
 export default componentCreator(ItinerariesUpdate)

@@ -7,12 +7,12 @@ class DayForm extends React.Component {
   }
 
   collectLocationForm() {
-    debugger
+
     const day = this.props.day
     return this.props.day.locations.map((location) => {
       return <div className="panel panel-default">
         <label>Location</label>
-        <button onClick={this.props.deleteLocation} id={location.id} name={day.day}>Delete</button>
+        <button className="btn btn-default" onClick={this.props.deleteLocation} id={location.id} name={day.day}>Delete</button>
         <LocationForm location={location} addActivity={this.props.addActivity} day={day} updateLocation={this.props.updateLocation} updateActivity={this.props.updateActivity} deleteActivity={this.props.deleteActivity} ref={this.refs} />
       </div>
     })
@@ -24,7 +24,7 @@ class DayForm extends React.Component {
   const day = this.props.day.day
     return(
       <div>
-        <button onClick={this.props.addLocation} id={day}>+ Location</button>
+        <button className="btn btn-default" onClick={this.props.addLocation} id={day}>+ Location</button>
         <div className="panel-group">
           {locationFormElements}
         </div>
