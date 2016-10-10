@@ -8,12 +8,12 @@ body {
 }
 
 div#root {
-  padding-top: 60px;
+  padding-top: 70px;
   z-index: 0;
 }
 
 .right {
-    float: right;
+  float: right;
 }
 
 .left {
