@@ -136,8 +136,8 @@ class ItinerariesUpdate extends React.Component {
     return this.state.itinerary.days.map((day) => {
       return <div className="panel panel-default">
         <div className="panel-heading">
-          Day {day.day}
-          <button className="btn btn-default" onClick={this.deleteDay} id={day.day}>Delete</button>
+          <button className="btn btn-default right" onClick={this.deleteDay} id={day.day}>Delete</button>
+          <h4>Day {day.day}</h4>
         </div>
         <div id="collapseOne" className="panel-collapse collapse in">
           <div className="panel-body">
