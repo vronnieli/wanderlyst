@@ -37,7 +37,6 @@ class ItinerariesNew extends React.Component {
   }
 
   newItineraryHandler(event) {
-    // debugger;
     event.preventDefault();
     // const newItinerary = {
     //   itinerary: {
