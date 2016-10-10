@@ -7,6 +7,7 @@ class DayForm extends React.Component {
   }
 
   collectLocationForm() {
+    debugger
     const day = this.props.day
     return this.props.day.locations.map((location) => {
       return <div className="panel panel-default">

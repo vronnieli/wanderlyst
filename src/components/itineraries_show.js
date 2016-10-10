@@ -40,7 +40,8 @@ function ItinerariesShow(props){
       </div>
     )
   }
-
+  // debugger
+  window.itineraryProps = props.itinerary
   return (
     <div className="col-lg-6">
       <div className="panel panel-default">

@@ -185,7 +185,7 @@ class ItinerariesNew extends React.Component {
             <div className="panel-heading">
               <div className="form-inline">
                 <label>Itinerary Name:</label>
-                <input type="text" ref="itinerary-name" onChange={this.updateItineraryName} />
+                <input type="text" ref="itinerary-name" value={this.state.itinerary.name} onChange={this.updateItineraryName} />
               </div>
               <button onClick={this.addDay}>+ Date</button>
             </div>
