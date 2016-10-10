@@ -190,7 +190,7 @@ class ItinerariesNew extends React.Component {
             </div>
             <div className="panel-body">
               <div className="panel-group">
-              {dayFormElements}
+                {dayFormElements}
               </div>
             </div>
             <input type="submit" />

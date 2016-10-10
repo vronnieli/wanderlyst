@@ -28,9 +28,39 @@ class SearchBar extends React.Component{
   }
   sessionBasedLink(){
     if (sessionStorage.jwt == undefined) {
-      return(<Link to="/login">Log In</Link>)
+      return(
+        <div>
+          <div className="navbar-brand topnav">
+            <strong>
+              <Link to="/login">Log In</Link>
+            </strong>
+          </div>
+          <div className="navbar-brand topnav">
+            <strong>
+              <Link to="/signup">Sign Up</Link>
+            </strong>
+          </div>
+        </div>
+      )
     } else {
-      return(<Link onClick={this.onLogOutHandler}>Log Out</Link>)
+      return(
+        <div>
+          <div className="navbar-brand topnav">
+            <strong>
+              <Link onClick={this.onLogOutHandler}>
+                Log Out
+              </Link>
+            </strong>
+          </div>
+          <div className="navbar-brand topnav">
+            <strong>
+              <Link to="/itineraries/new">
+                Create An Itinerary
+              </Link>
+            </strong>
+          </div>
+        </div>
+      )
     }
   }
 
@@ -39,7 +69,17 @@ class SearchBar extends React.Component{
     <nav className="navbar navbar-default navbar-static-top topnav">
       <div className="navbar-brand topnav">
         <strong>
-          wanderlyst
+          <Link to="/">
+            wanderlyst
+          </Link>
+        </strong>
+      </div>
+      {this.sessionBasedLink()}
+      <div className="navbar-brand topnav">
+        <strong>
+          <Link to="/itineraries" onClick={this.props.actions.fetchItineraries}>
+            All Itineraries
+          </Link>
         </strong>
       </div>
       <form className="form-inline well-sm" onSubmit={this.onSubmitHandler}>
@@ -49,9 +89,6 @@ class SearchBar extends React.Component{
         <input type="text" className="form-control" placeholder="activity..." ref="activity"/>
         <button type="submit" className="btn btn-default">Search</button>
       </form>
-      {this.sessionBasedLink()}
-      {/* <Link to="/login">Log In</Link> */}
-      {/* <Link onClick={this.onLogOutHandler}>Log Out</Link> */}
     </nav>
     )
   }
