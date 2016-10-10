@@ -14,7 +14,6 @@ class DayForm extends React.Component {
         <div className="panel panel-default">
           <button className="btn btn-default right" onClick={this.props.deleteLocation} id={location.id} name={day.day}>Delete</button>
           <label>Location</label>
-
           <LocationForm location={location} addActivity={this.props.addActivity} day={day} updateLocation={this.props.updateLocation} updateActivity={this.props.updateActivity} deleteActivity={this.props.deleteActivity} ref={this.refs} />
         </div>
       )
