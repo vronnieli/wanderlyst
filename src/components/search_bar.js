@@ -10,6 +10,7 @@ class SearchBar extends React.Component{
 
     this.onSubmitHandler = this.onSubmitHandler.bind(this)
     this.onLogOutHandler = this.onLogOutHandler.bind(this)
+    this.onMyItinerariesHandler = this.onMyItinerariesHandler.bind(this)
   }
 
   onSubmitHandler(event){
@@ -20,6 +21,12 @@ class SearchBar extends React.Component{
       activity: this.refs.activity.value
     })
     event.target.children[1].value = ""
+  }
+
+  onMyItinerariesHandler(event){
+    debugger;
+    this.props.actions.searchedItineraries({
+    })
   }
 
   onLogOutHandler(event) {
@@ -45,6 +52,7 @@ class SearchBar extends React.Component{
     } else {
       return(
         <div>
+          
           <div className="navbar-brand topnav">
             <strong>
               <Link onClick={this.onLogOutHandler}>
@@ -52,6 +60,7 @@ class SearchBar extends React.Component{
               </Link>
             </strong>
           </div>
+          
           <div className="navbar-brand topnav">
             <strong>
               <Link to="/itineraries/new">
@@ -59,6 +68,15 @@ class SearchBar extends React.Component{
               </Link>
             </strong>
           </div>
+
+          <div className="navbar-brand topnav">
+            <strong>
+              <Link onClick={this.onMyItinerariesHandler}>
+                My Lysts
+              </Link>
+            </strong>
+          </div>
+
         </div>
       )
     }

@@ -9,8 +9,8 @@ class SignUpForm extends React.Component {
     this.state = {
       user: {
         username: "",
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         email: "",
         password: ""
       }
@@ -41,10 +41,10 @@ class SignUpForm extends React.Component {
           <div className="form-inline">
             <form onSubmit={this.newUserHandler}>
               <label>First Name:</label>
-              <input type="text" name="firstName" onChange={this.onChangeHandler} value={this.state.user.firstName} />
+              <input type="text" name="first_name" onChange={this.onChangeHandler} value={this.state.user.first_name} />
               <br />
               <label>Last Name:</label>
-              <input type="text" name="lastName" onChange={this.onChangeHandler} value={this.state.user.lastName} />
+              <input type="text" name="last_name" onChange={this.onChangeHandler} value={this.state.user.last_name} />
               <br />
               <label>Email:</label>
               <input type="text" name="email" onChange={this.onChangeHandler} value={this.state.user.email} />
