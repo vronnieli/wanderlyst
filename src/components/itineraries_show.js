@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 
 function ItinerariesShow(props){
+
   const itinerary = props.itinerary
 
   function renderActivities(activity) {
@@ -39,7 +41,8 @@ function ItinerariesShow(props){
       </div>
     )
   }
-
+  //
+  // window.itineraryProps = props.itinerary
   return (
     <div className="col-lg-6">
       <div className="panel panel-default">
@@ -47,6 +50,11 @@ function ItinerariesShow(props){
           <h2 className="panel-title">
             {itinerary.name}
           </h2>
+          <Link to={`/itineraries/${itinerary.id}/update`}>
+            Update
+          </Link>
+          <br />
+          <button>{itinerary.upvotes} Upvotes</button>
         </div>
         <div className="list-group-item">User(s): {itinerary.users.map(renderUsers)}</div>
         {itinerary.days.map(renderDays)}
@@ -67,6 +75,7 @@ function mapStateToProps(state, ownProps){
     return  {
       itinerary: {
         name: "",
+        upvotes: 0,
         users: [{
           username: "",
           first_name: "",

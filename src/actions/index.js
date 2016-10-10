@@ -2,9 +2,9 @@
 export const BASE_URL = 'http://localhost:3000/api/v1/'
 
 export function createUser(params){
-  // debugger
+  //
   // const headers = this.requestHeaders();
-  debugger
+
   const user = fetch(`${BASE_URL}users`, {
     method: 'POST',
     body: JSON.stringify(params),
@@ -14,7 +14,7 @@ export function createUser(params){
       // headers
     }
   })
-  debugger
+
   return {
     type: 'CREATE_USER',
     payload: user
@@ -78,6 +78,13 @@ export function searchedItineraries(searchTerm){
   }
 }
 
+export function fetchItinerary(paramsId){
+  const itinerary = fetch(`${BASE_URL}itineraries/${paramsId}`).then((response) => {return response.json()}).then((itineraryPayload) => {return itineraryPayload})
+  return {
+    type: 'FETCH_ITINERARY',
+    payload: itinerary
+  }
+}
 
 export function fetchItineraries(){
   const itineraries = fetch(`${BASE_URL}itineraries`).then((response) => {return response.json()}).then((itinerariesPayload) => {return itinerariesPayload})
@@ -100,6 +107,24 @@ export function createItinerary(params){
   })
   return {
     type: 'CREATE_ITINERARY',
+    payload: itinerary
+  }
+}
+
+export function updateItinerary(params){
+  debugger
+  const headers = this.requestHeaders();
+  const itinerary = fetch(`${BASE_URL}itineraries/${params.itinerary.id}/update`, {
+    method: 'PATCH',
+    body: JSON.stringify(params),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      headers
+    }
+  })
+  return {
+    type: 'UPDATE_ITINERARY',
     payload: itinerary
   }
 }

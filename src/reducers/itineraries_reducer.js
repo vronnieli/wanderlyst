@@ -6,6 +6,10 @@ export default function itinerariesReducer(state=[], action) {
       return action.payload
     case 'CREATE_ITINERARY':
       return [...state, action.payload]
+    case 'FETCH_ITINERARY':
+      return action.payload
+    case 'UPDATE_ITINERARY':
+      return [...state, action.payload]
     default:
       return state;
   }
