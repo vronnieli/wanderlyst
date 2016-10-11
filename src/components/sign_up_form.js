@@ -15,6 +15,12 @@ class SignUpForm extends React.Component {
         password: ""
       }
     }
+    this.credentials = {
+      credentials: {
+        username: '',
+        password: ''
+      }
+    }
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.newUserHandler = this.newUserHandler.bind(this);
   }
@@ -28,6 +34,7 @@ class SignUpForm extends React.Component {
     event.preventDefault();
     
     this.props.actions.createUser(this.state)
+    this.props.actions.logInUser(this.credentials)
   }
   render(){
     return(

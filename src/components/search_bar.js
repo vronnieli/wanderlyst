@@ -33,6 +33,7 @@ class SearchBar extends React.Component{
     event.preventDefault();
     this.props.actions.logOutUser();
   }
+  
   sessionBasedLink(){
     if (sessionStorage.jwt == undefined) {
       return(

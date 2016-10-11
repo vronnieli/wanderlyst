@@ -35,6 +35,7 @@ function ItinerariesShow(props){
   }
 
   function renderUsers(user) {
+    debugger;
     return(
       <div>
         <p key={user.id}>{user.username}</p>

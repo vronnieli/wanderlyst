@@ -8,6 +8,7 @@ import DayForm from './day_form'
 
 class ItinerariesUpdate extends React.Component {
   constructor(props){
+    // debugger;
     super(props)
 
     this.state = {
@@ -19,6 +20,7 @@ class ItinerariesUpdate extends React.Component {
     this.addActivity = this.addActivity.bind(this)
     this.updateItineraryHandler = this.updateItineraryHandler.bind(this)
     this.updateItineraryName = this.updateItineraryName.bind(this)
+    this.updateDayHandler = this.updateDayHandler.bind(this)
     this.updateLocation = this.updateLocation.bind(this)
     this.updateActivity = this.updateActivity.bind(this)
     this.deleteDay = this.deleteDay.bind(this)
@@ -49,6 +51,7 @@ class ItinerariesUpdate extends React.Component {
   }
 
   deleteDay(event) {
+    // debugger;
     event.preventDefault()
     const copyOfState = Object.assign({},this.state)
     const day = event.target.id
@@ -113,7 +116,19 @@ class ItinerariesUpdate extends React.Component {
     this.setState(copyOfState)
   }
 
+  updateDayHandler(event){
+    const copyOfState = Object.assign({},this.state)
+    debugger;
+    if (event.target.value) {  
+      copyOfState.itinerary.days.filter(item => item.id !== parseInt(event.target.value))
+    } else {
+      this.deleteDay(event)
+    }
+    this.setState(copyOfState)
+  }
+
   updateLocation(event) {
+    // debugger;
     const location = event.target.id
     const day = event.target.name
     const newValue = event.target.value
@@ -137,7 +152,7 @@ class ItinerariesUpdate extends React.Component {
       return <div className="panel panel-default">
         <div className="panel-heading">
           Day {day.day}
-          <button onClick={this.deleteDay} id={day.day}>Delete</button>
+          <button onClick={this.updateDayHandler} id={day.day} value={day.id}>Delete</button>
         </div>
         <div id="collapseOne" className="panel-collapse collapse in">
           <div className="panel-body">

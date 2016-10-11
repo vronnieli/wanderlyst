@@ -2,7 +2,7 @@
 export const BASE_URL = 'http://localhost:3000/api/v1/'
 
 export function createUser(params){
-  //
+  debugger;
   // const headers = this.requestHeaders();
 
   const user = fetch(`${BASE_URL}users`, {
@@ -95,14 +95,16 @@ export function fetchItineraries(){
 }
 
 export function createItinerary(params){
-  const headers = this.requestHeaders();
+  debugger
+  // const headers = this.requestHeaders();
   const itinerary = fetch(`${BASE_URL}itineraries`, {
     method: 'POST',
     body: JSON.stringify(params),
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      headers
+      'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
+      // headers
     }
   })
   return {
@@ -113,14 +115,14 @@ export function createItinerary(params){
 
 export function updateItinerary(params){
   debugger
-  const headers = this.requestHeaders();
-  const itinerary = fetch(`${BASE_URL}itineraries/${params.itinerary.id}/update`, {
+  // const headers = this.requestHeaders();
+  const itinerary = fetch(`${BASE_URL}itineraries/${params.itinerary.id}`, {
     method: 'PATCH',
     body: JSON.stringify(params),
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      headers
+      'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
     }
   })
   return {
