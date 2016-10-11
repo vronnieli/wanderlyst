@@ -21,7 +21,6 @@ function ItinerariesIndex(props){
     return(
         <p className="list-group-item" key={activity.id}>
           {activity.name}
-          <img className="image" src={"http://localhost:3000/"+activity.image_url_thumb} />
         </p>
     )
   }

@@ -39,7 +39,6 @@ class ItinerariesNew extends React.Component {
   }
 
   newItineraryHandler(event) {
-    debugger;
     event.preventDefault();
     // this.props.actions.createItinerary(event.target)
     this.props.actions.createItinerary(this.state)
@@ -151,14 +150,12 @@ class ItinerariesNew extends React.Component {
   }
 
   updateActivityImage(event) {
-
     const location = event.target.id
     const day = event.target.name
     const activity = event.target.alt
     const newFile = event.target.files[0]
     const reader = new FileReader()
     const copyOfState = Object.assign({},this.state)
-    debugger
     reader.onload = function(event) {
       copyOfState.itinerary.days[day-1].locations[location-1].activities[activity-1].image = event.target.result
       this.setState(copyOfState)

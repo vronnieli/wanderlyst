@@ -70,7 +70,6 @@ export function fetchItineraries(){
 }
 
 export function createItinerary(params){
-  debugger;
   const itinerary = fetch(`${BASE_URL}itineraries`, {
     method: 'POST',
     body: JSON.stringify(params),
