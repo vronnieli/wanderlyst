@@ -2,7 +2,7 @@
 export const BASE_URL = 'http://localhost:3000/api/v1/'
 
 export function createUser(params){
-  debugger;
+  // debugger;
   // const headers = this.requestHeaders();
 
   const user = fetch(`${BASE_URL}users`, {
@@ -95,7 +95,7 @@ export function fetchItineraries(){
 }
 
 export function createItinerary(params){
-  debugger
+  // debugger
   // const headers = this.requestHeaders();
   const itinerary = fetch(`${BASE_URL}itineraries`, {
     method: 'POST',
@@ -114,7 +114,7 @@ export function createItinerary(params){
 }
 
 export function updateItinerary(params){
-  debugger
+  // debugger
   // const headers = this.requestHeaders();
   const itinerary = fetch(`${BASE_URL}itineraries/${params.itinerary.id}`, {
     method: 'PATCH',

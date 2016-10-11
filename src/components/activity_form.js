@@ -10,8 +10,8 @@ class ActivityForm extends React.Component {
     const day = this.props.day.day
     const activity = this.props.activity.id
     return(
-      <div>
-        <input type="text" ref="activity-name" onChange={this.props.updateActivity} id={location} name={day} alt={activity} value={this.props.activity.name}/>
+      <div className="panel-group-item">
+        <input className="form-control" type="text" ref="activity-name" onChange={this.props.updateActivity} id={location} name={day} alt={activity} value={this.props.activity.name}/>
       </div>
     )
   }
