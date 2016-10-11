@@ -21,11 +21,11 @@ export function createUser(params){
   }
 }
 // static requestHeaders() {
-export function requestHeaders() {
-  return {
-    'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
-  }
-}
+// export function requestHeaders() {
+//   return {
+//     'Authorization': `Bearer ${sessionStorage.getItem('jwt')}`
+//   }
+// }
 
 export function logInUser(credentials) {
   const jwtToken = fetch(`${BASE_URL}login`, {
@@ -95,8 +95,6 @@ export function fetchItineraries(){
 }
 
 export function createItinerary(params){
-  // debugger
-  // const headers = this.requestHeaders();
   const itinerary = fetch(`${BASE_URL}itineraries`, {
     method: 'POST',
     body: JSON.stringify(params),
@@ -104,7 +102,6 @@ export function createItinerary(params){
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
-      // headers
     }
   })
   return {

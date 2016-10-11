@@ -12,23 +12,15 @@ class LocationForm extends React.Component {
     const location = this.props.location
     const day = this.props.day
     return this.props.location.activities.map((activity) => {
-<<<<<<< HEAD
-      return <div className="panel panel-default">
-        <label>Activity</label>
-        <ActivityForm activity={activity} addActivity={this.props.addActivity} location={this.props.location} day={this.props.day} updateActivity={this.props.updateActivity} ref={this.refs} id={location.id}/>
-        <button className="btn btn-default" onClick={this.props.deleteActivity} id={location.id} name={day.day} value={activity.id}>Delete</button>
-      </div>
-=======
       return(
         <div className="panel panel-default">
           <button className="btn btn-default right" onClick={this.props.deleteActivity} id={location.id} name={day.day} value={activity.id}>Delete</button>
           <label>Activity</label>
           <div className="panel-group-item">
-            <ActivityForm activity={activity} addActivity={this.props.addActivity} location={this.props.location} day={this.props.day} updateActivity={this.props.updateActivity} ref={this.refs} />
+            <ActivityForm activity={activity} addActivity={this.props.addActivity} location={this.props.location} day={this.props.day} updateActivity={this.props.updateActivity} updateActivityImage={this.props.updateActivityImage} ref={this.refs} id={location.id}/>
           </div>
         </div>
       )
->>>>>>> f8b8c6e4a27a332cd8b5a0e3b8c707b77de627e0
     })
   }
 
