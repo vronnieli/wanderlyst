@@ -11,7 +11,8 @@ class ActivityForm extends React.Component {
     const activity = this.props.activity.id
     return(
       <div>
-        <input type="text" ref="activity-name" onChange={this.props.updateActivity} id={location} name={day} alt={activity}/>
+        <input type="text" onChange={this.props.updateActivity} id={location} name={day} alt={activity}/>
+        <input type="file" onChange={this.props.updateActivityImage} id={location} name={day} alt={activity}/>
       </div>
     )
   }

@@ -18,7 +18,8 @@ class ItinerariesNew extends React.Component {
             city: "",
             activities: [{
               id: 1,
-              name: ""
+              name: "",
+              image: ""
             }]
           }]
         }]
@@ -31,28 +32,16 @@ class ItinerariesNew extends React.Component {
     this.updateItineraryName = this.updateItineraryName.bind(this)
     this.updateLocation = this.updateLocation.bind(this)
     this.updateActivity = this.updateActivity.bind(this)
+    this.updateActivityImage = this.updateActivityImage.bind(this)
     this.deleteDay = this.deleteDay.bind(this)
     this.deleteLocation = this.deleteLocation.bind(this)
     this.deleteActivity = this.deleteActivity.bind(this)
   }
 
   newItineraryHandler(event) {
+    debugger;
     event.preventDefault();
-    // const newItinerary = {
-    //   itinerary: {
-    //     name: this.refs["itinerary-name"].value,
-    //     days: [{
-    //       day: this.refs[{}].refs["day-name"].value,
-    //       locations: [{
-    //         city: this.refs[{}].refs[{}].refs["location-name"].value,
-    //         activities: [{
-    //           name: this.refs[{}].refs[{}].refs[{}].refs["activity-name"].value
-    //         }]
-    //       }]
-    //     }]
-    //   }
-    // }
-    // this.props.actions.createItinerary(newItinerary)
+    // this.props.actions.createItinerary(event.target)
     this.props.actions.createItinerary(this.state)
   }
 
@@ -67,7 +56,8 @@ class ItinerariesNew extends React.Component {
         city: "",
         activities: [{
           id: 1,
-          name: ""
+          name: "",
+          image: ""
         }]
       }]
     })
@@ -93,7 +83,8 @@ class ItinerariesNew extends React.Component {
       city: "",
       activities: [{
         id: 1,
-        name: ""
+        name: "",
+        image: ""
       }]
     })
     this.setState(copyOfState)
@@ -117,7 +108,8 @@ class ItinerariesNew extends React.Component {
     const activitiesLength = this.state.itinerary.days[day-1].locations[location-1].activities.length+1
     copyOfState.itinerary.days[day-1].locations[location-1].activities.push({
       id: activitiesLength,
-      name: ""
+      name: "",
+      image: ""
     })
     this.setState(copyOfState)
   }
@@ -158,6 +150,22 @@ class ItinerariesNew extends React.Component {
     this.setState(copyOfState)
   }
 
+  updateActivityImage(event) {
+
+    const location = event.target.id
+    const day = event.target.name
+    const activity = event.target.alt
+    const newFile = event.target.files[0]
+    const reader = new FileReader()
+    const copyOfState = Object.assign({},this.state)
+    debugger
+    reader.onload = function(event) {
+      copyOfState.itinerary.days[day-1].locations[location-1].activities[activity-1].image = event.target.result
+      this.setState(copyOfState)
+    }.bind(this)
+    reader.readAsDataURL(newFile)
+  }
+
   collectDayForm() {
     return this.state.itinerary.days.map((day) => {
       return <div className="panel panel-default">
@@ -167,7 +175,7 @@ class ItinerariesNew extends React.Component {
         </div>
         <div id="collapseOne" className="panel-collapse collapse in">
           <div className="panel-body">
-            <DayForm day={day} addLocation={this.addLocation} addActivity={this.addActivity} updateLocation={this.updateLocation} updateActivity={this.updateActivity} deleteLocation={this.deleteLocation} deleteActivity={this.deleteActivity} ref={this.refs} />
+            <DayForm day={day} addLocation={this.addLocation} addActivity={this.addActivity} updateLocation={this.updateLocation} updateActivity={this.updateActivity} updateActivityImage={this.updateActivityImage} deleteLocation={this.deleteLocation} deleteActivity={this.deleteActivity} />
           </div>
         </div>
       </div>
@@ -180,11 +188,11 @@ class ItinerariesNew extends React.Component {
     return(
       <div className="col-lg-8">
         <div className="panel panel-default">
-          <form onSubmit={this.newItineraryHandler}>
+          <form onSubmit={this.newItineraryHandler} encType="multipart/form-data">
             <div className="panel-heading">
               <div className="form-inline">
                 <label>Itinerary Name:</label>
-                <input type="text" ref="itinerary-name" onChange={this.updateItineraryName} />
+                <input type="text" onChange={this.updateItineraryName} />
               </div>
               <button onClick={this.addDay}>+ Date</button>
             </div>
