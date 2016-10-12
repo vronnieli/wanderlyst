@@ -26,9 +26,10 @@ class SignUpForm extends React.Component {
   }
   newUserHandler(event) {
     event.preventDefault();
-    debugger
+    
     this.props.actions.createUser(this.state)
   }
+  
   render(){
     return(
       <div className="col-lg-3">

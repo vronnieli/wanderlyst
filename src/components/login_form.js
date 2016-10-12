@@ -7,7 +7,6 @@ import * as actions from '../actions';
 // export default function LoginForm(props) {
 class LogInForm extends React.Component {
   constructor(props){
-    debugger
     super(props)
     this.state = {
       credentials: {
@@ -20,7 +19,6 @@ class LogInForm extends React.Component {
   }
   onSave(event) {
     event.preventDefault();
-    debugger;
     this.props.actions.logInUser(this.state.credentials);
   }
   onChangeHandler(event) {

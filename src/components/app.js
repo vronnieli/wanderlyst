@@ -10,7 +10,6 @@ import LoginForm from './login_form';
 
 class App extends Component {
   constructor(props) {
-    debugger;
     super(props)
     this.state = {logged_in: false}
     this.loggedInHandler = this.loggedInHandler.bind(this)
@@ -18,13 +17,11 @@ class App extends Component {
   }
 
   loggedInHandler(){
-    debugger;
     if (sessionStorage.jwt)
       {this.setState({logged_in: true})}
   }
 
   onLogOutHandler(event) {
-    debugger;
     event.preventDefault();
     this.props.actions.logOutUser();
     this.setState({logged_in: false})

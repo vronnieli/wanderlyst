@@ -11,7 +11,6 @@ class SearchBar extends React.Component{
     //   logged_in: false
     // }
     this.props.actions.loggedIn
-    debugger;
     this.onSubmitHandler = this.onSubmitHandler.bind(this)
     // this.onLogOutHandler = this.onLogOutHandler.bind(this)
     // this.loggedInHandler = this.loggedInHandler.bind(this)
@@ -33,7 +32,6 @@ class SearchBar extends React.Component{
   //   this.setState({logged_in: false})
   // }
   sessionBasedLink(){
-    debugger;
     if (sessionStorage.jwt == undefined) {
       return(
         <div>

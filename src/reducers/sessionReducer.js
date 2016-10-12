@@ -7,7 +7,6 @@ export default function sessionReducer(state = [], action) {
       sessionStorage.setItem('jwt', action.payload.jwt)
       // sessionStorage.setItem('currentUserId', action.payload.currentUserId)
       browserHistory.push('/')
-      debugger
       return !!sessionStorage.jwt
     case 'LOG_OUT':
       browserHistory.push('/')

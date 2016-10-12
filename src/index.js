@@ -13,6 +13,7 @@ const store = createStore(rootReducer, applyMiddleware(ReduxPromise));
 
 store.dispatch( fetchItineraries() );
 
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory} routes={routes} />
