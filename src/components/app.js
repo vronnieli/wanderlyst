@@ -6,16 +6,34 @@ import {Link} from 'react-router';
 import * as actions from '../actions/index';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import LoginForm from './login_form';
 
 class App extends Component {
   constructor(props) {
+    debugger;
     super(props)
+    this.state = {logged_in: false}
+    this.loggedInHandler = this.loggedInHandler.bind(this)
+    this.onLogOutHandler = this.onLogOutHandler.bind(this)
+  }
+
+  loggedInHandler(){
+    debugger;
+    if (sessionStorage.jwt)
+      {this.setState({logged_in: true})}
+  }
+
+  onLogOutHandler(event) {
+    debugger;
+    event.preventDefault();
+    this.props.actions.logOutUser();
+    this.setState({logged_in: false})
   }
 
   render() {
     return (
       <div>
-        <SearchBar/>
+        <SearchBar state={this.state} loggedIn={this.loggedInHandler} loggedOut={this.onLogOutHandler} />
         {this.props.children}
       </div>
     );
@@ -28,7 +46,13 @@ function mapDispatchToProps(dispatch){
   }
 };
 
-const componentCreator = connect(null, mapDispatchToProps);
+function mapStateToProps(state) {
+  return {
+    logged_in: state.logged_in
+  }
+}
+
+const componentCreator = connect(mapStateToProps, mapDispatchToProps);
 export default componentCreator(App);
 
 

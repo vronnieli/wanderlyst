@@ -7,9 +7,14 @@ import {Link} from 'react-router';
 class SearchBar extends React.Component{
   constructor(props){
     super(props);
-
+    // this.state = {
+    //   logged_in: false
+    // }
+    this.props.actions.loggedIn
+    debugger;
     this.onSubmitHandler = this.onSubmitHandler.bind(this)
-    this.onLogOutHandler = this.onLogOutHandler.bind(this)
+    // this.onLogOutHandler = this.onLogOutHandler.bind(this)
+    // this.loggedInHandler = this.loggedInHandler.bind(this)
   }
 
   onSubmitHandler(event){
@@ -22,17 +27,19 @@ class SearchBar extends React.Component{
     event.target.children[1].value = ""
   }
 
-  onLogOutHandler(event) {
-    event.preventDefault();
-    this.props.actions.logOutUser();
-  }
+  // onLogOutHandler(event) {
+  //   event.preventDefault();
+  //   this.props.actions.logOutUser();
+  //   this.setState({logged_in: false})
+  // }
   sessionBasedLink(){
+    debugger;
     if (sessionStorage.jwt == undefined) {
       return(
         <div>
           <div className="navbar-brand topnav">
             <strong>
-              <Link to="/login">Log In</Link>
+              <Link to="/login" id={this.props.loggedIn}>Log In</Link>
             </strong>
           </div>
           <div className="navbar-brand topnav">
@@ -47,7 +54,7 @@ class SearchBar extends React.Component{
         <div>
           <div className="navbar-brand topnav">
             <strong>
-              <Link onClick={this.onLogOutHandler}>
+              <Link onClick={this.props.loggedOut}>
                 Log Out
               </Link>
             </strong>
