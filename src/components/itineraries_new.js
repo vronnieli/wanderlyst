@@ -186,7 +186,7 @@ class ItinerariesNew extends React.Component {
   render() {
     const dayFormElements = this.collectDayForm()
     return(
-      <div className="col-lg-8">
+      <div className="col-lg-6">
         <div className="panel panel-default">
           <form onSubmit={this.newItineraryHandler} encType="multipart/form-data">
             <div className="panel-heading">

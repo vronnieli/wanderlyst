@@ -12,6 +12,14 @@ div#root {
   z-index: 0;
 }
 
+.center {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
 .right {
   float: right;
 }

@@ -178,7 +178,7 @@ class ItinerariesUpdate extends React.Component {
     const dayFormElements = this.collectDayForm()
 
     return(
-      <div className="col-lg-8">
+      <div className="col-lg-6">
         <div className="panel panel-default">
           <form onSubmit={this.updateItineraryHandler}>
             <div className="panel-heading">
@@ -193,7 +193,7 @@ class ItinerariesUpdate extends React.Component {
                 {dayFormElements}
               </div>
             </div>
-            <input type="submit" />
+            <input className="btn btn-default" type="submit" />
           </form>
         </div>
       </div>
