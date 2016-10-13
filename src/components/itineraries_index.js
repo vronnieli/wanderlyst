@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router'
+import {Link} from 'react-router';
 
 function ItinerariesIndex(props){
   // function allowDrop(event) {
@@ -19,7 +19,9 @@ function ItinerariesIndex(props){
 
   function renderActivities(activity) {
     return(
-        <p className="list-group-item" key={activity.id}>{activity.name}</p>
+        <p className="list-group-item" key={activity.id}>
+          {activity.name}
+        </p>
     )
   }
 

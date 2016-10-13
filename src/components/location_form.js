@@ -29,10 +29,15 @@ class LocationForm extends React.Component {
   const location = this.props.location.id
   const day = this.props.day.day
     return(
+<<<<<<< HEAD
       <div className="activities">
         <div className="panel-group-item">
           <input className="form-control" type="text" ref="location-city" onChange={this.props.updateLocation} id={location} name={day} value={this.props.location.city}/>
         </div>
+=======
+      <div>
+        <input type="text" onChange={this.props.updateLocation} id={location} name={day}/>
+>>>>>>> 16d45b4b2dab6aaad12ebcd201af8903591e345b
         <br/>
         <button className="btn btn-default" onClick={this.props.addActivity} id={location} name={day}>+ Activity</button>
         <div className="panel-group">
