@@ -11,7 +11,7 @@ function ItinerariesShow(props){
         <p draggable="true" className="list-group-item" key={activity.id}>
           {activity.name}
           <br/>
-          <img className="image" src={"http://localhost:3000/"+activity.image_url_thumb} />
+          <img className="image" src={"http://localhost:3000"+activity.image_url_thumb} />
         </p>
     )
   }

@@ -131,19 +131,30 @@ class ItinerariesUpdate extends React.Component {
     // debugger;
     const location = parseInt(event.target.id)
     const day = parseInt(event.target.name)
-    const newValue = event.target.value
+    var newValue
+    if (event.target.value == undefined){
+      newValue = event.target.placeholder
+    } else {
+      newValue = event.target.value
+    }
     const copyOfState = Object.assign({},this.state)
     copyOfState.itinerary.days.find(x => x.day === day).locations.find(x => x.id === location).city = event.target.value = newValue
     this.setState(copyOfState)
   }
 
   updateActivity(event) {
+    // debugger;
     const location = event.target.id
     const day = event.target.name
     const activity = event.target.alt
-    const newValue = event.target.value
+    var newValue
+    if (event.target.value == undefined){
+      newValue = event.target.placeholder
+    } else {
+      newValue = event.target.value
+    }
     const copyOfState = Object.assign({},this.state)
-    copyOfState.itinerary.days[day-1].locations[location-1].activities[activity-1].name = newValue
+    copyOfState.itinerary.days.find(x => x.day === parseInt(day)).locations.find(x => x.id === parseInt(location)).activities.find(x => x.id === parseInt(activity)).name = newValue
     this.setState(copyOfState)
   }
 
