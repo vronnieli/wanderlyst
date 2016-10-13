@@ -12,13 +12,20 @@ class App extends Component {
     super(props)
   }
 
+
   render() {
     return (
       <div>
-        <SearchBar/>
+        <SearchBar />
         {this.props.children}
       </div>
     );
+  }
+}
+
+function mapStateToProps(state){
+  return {
+    session: state.session
   }
 }
 
@@ -28,7 +35,7 @@ function mapDispatchToProps(dispatch){
   }
 };
 
-const componentCreator = connect(null, mapDispatchToProps);
+const componentCreator = connect(mapStateToProps, mapDispatchToProps);
 export default componentCreator(App);
 
 

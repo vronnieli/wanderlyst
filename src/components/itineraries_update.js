@@ -2,50 +2,34 @@ import React from 'react';
 import * as actions from '../actions';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import DayForm from './day_form';
+import ItinerariesNew from './itineraries_new'
+import ItinerariesShow from './itineraries_show'
+import DayForm from './day_form'
 
-
-class ItinerariesNew extends React.Component {
-  constructor(props) {
+class ItinerariesUpdate extends React.Component {
+  constructor(props){
+    // debugger;
     super(props)
+
     this.state = {
-      itinerary: {
-        name: "",
-        upvotes: 0,
-        users: [{
-          name: "Me"
-        }],
-        days: [{
-          day: 1,
-          locations: [{
-            id: 1,
-            city: "",
-            activities: [{
-              id: 1,
-              name: "",
-              image: ""
-            }]
-          }]
-        }]
-      }
+      itinerary: props.itinerary
     }
+    // this.props.params.id
     this.addDay = this.addDay.bind(this)
     this.addLocation = this.addLocation.bind(this)
     this.addActivity = this.addActivity.bind(this)
-    this.newItineraryHandler = this.newItineraryHandler.bind(this)
+    this.updateItineraryHandler = this.updateItineraryHandler.bind(this)
     this.updateItineraryName = this.updateItineraryName.bind(this)
+    this.updateDayHandler = this.updateDayHandler.bind(this)
     this.updateLocation = this.updateLocation.bind(this)
     this.updateActivity = this.updateActivity.bind(this)
-    this.updateActivityImage = this.updateActivityImage.bind(this)
     this.deleteDay = this.deleteDay.bind(this)
     this.deleteLocation = this.deleteLocation.bind(this)
     this.deleteActivity = this.deleteActivity.bind(this)
   }
-
-  newItineraryHandler(event) {
+  updateItineraryHandler(event) {
     event.preventDefault();
-    // this.props.actions.createItinerary(event.target)
-    this.props.actions.createItinerary(this.state)
+    this.props.actions.updateItinerary(this.state)
   }
 
   addDay(event) {
@@ -59,8 +43,7 @@ class ItinerariesNew extends React.Component {
         city: "",
         activities: [{
           id: 1,
-          name: "",
-          image: ""
+          name: ""
         }]
       }]
     })
@@ -68,6 +51,7 @@ class ItinerariesNew extends React.Component {
   }
 
   deleteDay(event) {
+    // debugger;
     event.preventDefault()
     const copyOfState = Object.assign({},this.state)
     const day = event.target.id
@@ -86,8 +70,7 @@ class ItinerariesNew extends React.Component {
       city: "",
       activities: [{
         id: 1,
-        name: "",
-        image: ""
+        name: ""
       }]
     })
     this.setState(copyOfState)
@@ -111,8 +94,7 @@ class ItinerariesNew extends React.Component {
     const activitiesLength = this.state.itinerary.days[day-1].locations[location-1].activities.length+1
     copyOfState.itinerary.days[day-1].locations[location-1].activities.push({
       id: activitiesLength,
-      name: "",
-      image: ""
+      name: ""
     })
     this.setState(copyOfState)
   }
@@ -134,39 +116,46 @@ class ItinerariesNew extends React.Component {
     this.setState(copyOfState)
   }
 
-  updateLocation(event) {
-    // debugger
-    const location = event.target.id
-    const day = event.target.name
-    const newValue = event.target.value
+  updateDayHandler(event){
     const copyOfState = Object.assign({},this.state)
-    copyOfState.itinerary.days[day-1].locations[location-1].city = newValue
+    // debugger;
+    if (event.target.value) {  
+      copyOfState.itinerary.days.filter(item => item.id !== parseInt(event.target.value))
+    } else {
+      this.deleteDay(event)
+    }
+    this.setState(copyOfState)
+  }
+
+  updateLocation(event) {
+    // debugger;
+    const location = parseInt(event.target.id)
+    const day = parseInt(event.target.name)
+    var newValue
+    if (event.target.value == undefined){
+      newValue = event.target.placeholder
+    } else {
+      newValue = event.target.value
+    }
+    const copyOfState = Object.assign({},this.state)
+    copyOfState.itinerary.days.find(x => x.day === day).locations.find(x => x.id === location).city = event.target.value = newValue
     this.setState(copyOfState)
   }
 
   updateActivity(event) {
-    // debugger
+    // debugger;
     const location = event.target.id
     const day = event.target.name
     const activity = event.target.alt
-    const newValue = event.target.value
+    var newValue
+    if (event.target.value == undefined){
+      newValue = event.target.placeholder
+    } else {
+      newValue = event.target.value
+    }
     const copyOfState = Object.assign({},this.state)
-    copyOfState.itinerary.days[day-1].locations[location-1].activities[activity-1].name = newValue
+    copyOfState.itinerary.days.find(x => x.day === parseInt(day)).locations.find(x => x.id === parseInt(location)).activities.find(x => x.id === parseInt(activity)).name = newValue
     this.setState(copyOfState)
-  }
-
-  updateActivityImage(event) {
-    const location = event.target.id
-    const day = event.target.name
-    const activity = event.target.alt
-    const newFile = event.target.files[0]
-    const reader = new FileReader()
-    const copyOfState = Object.assign({},this.state)
-    reader.onload = function(event) {
-      copyOfState.itinerary.days[day-1].locations[location-1].activities[activity-1].image = event.target.result
-      this.setState(copyOfState)
-    }.bind(this)
-    reader.readAsDataURL(newFile)
   }
 
   collectDayForm() {
@@ -178,25 +167,23 @@ class ItinerariesNew extends React.Component {
         </div>
         <div id="collapseOne" className="panel-collapse collapse in">
           <div className="panel-body">
-            <DayForm day={day} addLocation={this.addLocation} addActivity={this.addActivity} updateLocation={this.updateLocation} updateActivity={this.updateActivity} updateActivityImage={this.updateActivityImage} deleteLocation={this.deleteLocation} deleteActivity={this.deleteActivity} />
+            <DayForm day={day} addLocation={this.addLocation} addActivity={this.addActivity} updateLocation={this.updateLocation} updateActivity={this.updateActivity} deleteLocation={this.deleteLocation} deleteActivity={this.deleteActivity} ref={this.refs} dayState={this.state} value={this.state.itinerary.days[day.id-1]} />
           </div>
         </div>
       </div>
     })
   }
-
-
-  render() {
+  render(){
     const dayFormElements = this.collectDayForm()
 
     return(
       <div className="col-lg-8">
         <div className="panel panel-default">
-          <form onSubmit={this.newItineraryHandler} encType="multipart/form-data">
+          <form onSubmit={this.updateItineraryHandler}>
             <div className="panel-heading">
-              <div className="panel-title">
+              <div className="form-inline">
                 <label>Itinerary Name:</label>
-                <input className="form-control" type="text" ref="itinerary-name" value={this.state.itinerary.name} onChange={this.updateItineraryName} />
+                <input type="text" ref="itinerary-name" value={this.state.itinerary.name} onChange={this.updateItineraryName} />
               </div>
               <button className="btn btn-default" onClick={this.addDay}>+ Date</button>
             </div>
@@ -205,7 +192,7 @@ class ItinerariesNew extends React.Component {
                 {dayFormElements}
               </div>
             </div>
-            <input className="btn btn-default" type="submit" />
+            <input type="submit" />
           </form>
         </div>
       </div>
@@ -213,9 +200,41 @@ class ItinerariesNew extends React.Component {
   }
 }
 
+function mapStateToProps(state, ownProps){
+  const itinerary = state.itineraries.find(itinerary => itinerary.id == ownProps.params.id);
+  if (itinerary) {
+    return {
+      itinerary: itinerary
+    }
+  } else {
+    return  {
+      itinerary: {
+        name: "",
+        upvotes: 0,
+        users: [{
+          username: "",
+          first_name: "",
+          last_name: ""
+        }],
+        days: [{
+          day: "",
+          locations: [{
+            city: "",
+            activities: [{
+              name: ""
+            }]
+          }]
+        }]
+      }
+    }
+  }
+}
+
+// export default connect(mapStateToProps)(ItinerariesShow)
+
 function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
-const componentCreator = connect(null, mapDispatchToProps)
-export default componentCreator(ItinerariesNew)
+const componentCreator = connect(mapStateToProps, mapDispatchToProps)
+export default componentCreator(ItinerariesUpdate)

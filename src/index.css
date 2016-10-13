@@ -1,9 +1,23 @@
 body {
-     background: url(wanderlyst-background.jpeg) no-repeat center center fixed;
-     -webkit-background-size: cover;
-     -moz-background-size: cover;
-     -o-background-size: cover;
-     background-size: cover;
+    background: url(wanderlyst-background.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: 0;
+}
+
+div#root {
+  padding-top: 70px;
+  z-index: 0;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
 }
 
 a {
@@ -20,10 +34,14 @@ a:focus {
   outline-offset: -2px;
 }
 .navbar {
-  position: relative;
+  position: fixed;
+  padding-top: 0px;
+  width: 100%;
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
+  top: 0;
+  z-index: 3;
 }
 @media (min-width: 768px) {
   .navbar {
