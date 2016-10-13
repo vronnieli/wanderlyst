@@ -12,9 +12,9 @@ class ItinerariesNew extends React.Component {
       itinerary: {
         name: "",
         upvotes: 0,
-        users: [{
-          name: "Me"
-        }],
+        user: {
+          name: ""
+        },
         days: [{
           day: 1,
           locations: [{
