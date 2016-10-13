@@ -100,7 +100,6 @@ export function createItinerary(params){
       'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
     }
   })
-  debugger
   return {
     type: 'CREATE_ITINERARY',
     payload: itinerary
@@ -121,6 +120,23 @@ export function updateItinerary(params){
   })
   return {
     type: 'UPDATE_ITINERARY',
+    payload: itinerary
+  }
+}
+
+export function addVote(params) {
+  debugger;
+  const itinerary = fetch(`${BASE_URL}itineraries/${params.itinerary.id}`, {
+    method: 'PATCH',
+    body: JSON.stringify(params),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
+    }
+  })
+  return {
+    type: 'ADD_VOTE',
     payload: itinerary
   }
 }

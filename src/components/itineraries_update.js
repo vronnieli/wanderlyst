@@ -119,7 +119,7 @@ class ItinerariesUpdate extends React.Component {
   updateDayHandler(event){
     const copyOfState = Object.assign({},this.state)
     // debugger;
-    if (event.target.value) {  
+    if (event.target.value) {
       copyOfState.itinerary.days.filter(item => item.id !== parseInt(event.target.value))
     } else {
       this.deleteDay(event)
@@ -159,6 +159,7 @@ class ItinerariesUpdate extends React.Component {
   }
 
   collectDayForm() {
+    debugger;
     return this.state.itinerary.days.map((day) => {
       return <div className="panel panel-default">
         <div className="panel-heading">
@@ -204,6 +205,7 @@ function mapStateToProps(state, ownProps){
   const itinerary = state.itineraries.find(itinerary => itinerary.id == ownProps.params.id);
   if (itinerary) {
     return {
+      itineraries: state.itineraries,
       itinerary: itinerary
     }
   } else {
@@ -231,6 +233,7 @@ function mapStateToProps(state, ownProps){
 }
 
 // export default connect(mapStateToProps)(ItinerariesShow)
+
 
 function mapDispatchToProps(dispatch) {
   return {actions: bindActionCreators(actions, dispatch)}

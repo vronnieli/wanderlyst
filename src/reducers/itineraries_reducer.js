@@ -13,7 +13,11 @@ export default function itinerariesReducer(state=[], action) {
     case 'FETCH_ITINERARY':
       return action.payload
     case 'UPDATE_ITINERARY':
-      return [...state, action.payload]
+      browserHistory.push('/itineraries')
+      return action.payload
+    case 'ADD_VOTE':
+      browserHistory.push('/itineraries')
+      return action.payload
     default:
       return state;
   }
