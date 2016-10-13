@@ -10,11 +10,11 @@ import SignUpForm from './components/sign_up_form'
 
 export default (
   <Route>
-    <Route path="/" component={App} >
+    <Route path="/" component={App}  >
       <Route path="/login" component={LoginForm} />
       <Route path="/signup" component={SignUpForm} />
-      <Route path="/itineraries" component={ItinerariesIndex} onEnter={requireAuth} >
-        <Route path="/itineraries/new" component={ItinerariesNew} />
+      <Route path="/itineraries" component={ItinerariesIndex} >
+        <Route path="/itineraries/new" component={ItinerariesNew} onEnter={requireAuth} />
         <Route path="/itineraries/:id" component={ItinerariesShow} />
       </Route>
     </Route>
@@ -25,9 +25,9 @@ function requireAuth(nextState, replace) {
   if (!sessionStorage.jwt){
     replace({
       pathname: '/login',
-      state: {
-        nextPathname: nextState.location.pathname
-      }
+      // state: {
+      //   nextPathname: nextState.location.pathname
+      // }
     })
   }
 }

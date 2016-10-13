@@ -2,9 +2,6 @@
 export const BASE_URL = 'http://localhost:3000/api/v1/'
 
 export function createUser(params){
-  // debugger
-  // const headers = this.requestHeaders();
-  debugger
   const user = fetch(`${BASE_URL}users`, {
     method: 'POST',
     body: JSON.stringify(params),
@@ -14,7 +11,6 @@ export function createUser(params){
       // headers
     }
   })
-  debugger
   return {
     type: 'CREATE_USER',
     payload: user

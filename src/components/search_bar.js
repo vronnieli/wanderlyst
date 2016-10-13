@@ -7,10 +7,11 @@ import {Link} from 'react-router';
 class SearchBar extends React.Component{
   constructor(props){
     super(props);
-
+    this.state = {jwt: sessionStorage.jwt}
     this.onSubmitHandler = this.onSubmitHandler.bind(this)
     this.onLogOutHandler = this.onLogOutHandler.bind(this)
   }
+
 
   onSubmitHandler(event){
     event.preventDefault();
@@ -25,14 +26,21 @@ class SearchBar extends React.Component{
   onLogOutHandler(event) {
     event.preventDefault();
     this.props.actions.logOutUser();
+    this.setState({jwt: sessionStorage.jwt})
   }
+
+  // onLogInHandler(event) {
+  //   event.preventDefault();
+  //   debugger;
+  // }
+
   sessionBasedLink(){
     if (sessionStorage.jwt == undefined) {
       return(
         <div>
           <div className="navbar-brand topnav">
             <strong>
-              <Link to="/login">Log In</Link>
+              <Link to="/login" >Log In</Link>
             </strong>
           </div>
           <div className="navbar-brand topnav">
@@ -65,11 +73,16 @@ class SearchBar extends React.Component{
   }
 
   render(){
+ //    const childrenWithProps = React.Children.map(this.props.children,
+ // (child) => React.cloneElement(child, {
+ //   logInHandler: this.onLogInHandler
+ //    })
+ //  );
   return (
     <nav className="navbar navbar-default navbar-static-top topnav">
       <div className="navbar-brand topnav">
         <strong>
-          <Link to="/">
+          <Link to="/" >
             wanderlyst
           </Link>
         </strong>
@@ -94,11 +107,17 @@ class SearchBar extends React.Component{
   }
 }
 
+function mapStateToProps(state){
+  return {
+    itineraries: state.itineraries
+  }
+}
+
 function mapDispatchToProps(dispatch){
   return {
     actions: bindActionCreators(actions, dispatch)
   }
 };
 
-const componentCreator = connect(null, mapDispatchToProps);
+const componentCreator = connect(mapStateToProps, mapDispatchToProps);
 export default componentCreator(SearchBar);

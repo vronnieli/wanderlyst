@@ -3,6 +3,9 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
+import {browserHistory} from 'react-router';
+import App from './app';
+import { Route } from 'react-router';
 
 // export default function LoginForm(props) {
 class LogInForm extends React.Component {
@@ -19,7 +22,7 @@ class LogInForm extends React.Component {
   }
   onSave(event) {
     event.preventDefault();
-    this.props.actions.logInUser(this.state.credentials);
+    this.props.actions.logInUser(this.state.credentials)
   }
   onChangeHandler(event) {
     const field = event.target.name;
@@ -44,7 +47,7 @@ class LogInForm extends React.Component {
               <label>Password:</label>
               <input type="password" name="password" onChange={this.onChangeHandler} value={this.state.credentials.password} />
               <br />
-              <input type="submit" />
+              <input type="submit"/>
             </form>
           </div>
         </div>
@@ -53,10 +56,15 @@ class LogInForm extends React.Component {
   }
 }
 
+function mapStateToProps(state){
+  return {
+    session: state.session
+  }
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(actions, dispatch)
   };
 }
-export default connect(null, mapDispatchToProps)(LogInForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LogInForm);
