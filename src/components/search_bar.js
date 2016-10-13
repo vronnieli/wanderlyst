@@ -26,7 +26,8 @@ class SearchBar extends React.Component{
 
   onMyItinerariesHandler(event){
     debugger;
-    this.props.actions.searchedItineraries({
+    this.props.actions.myItineraries({
+      jwt: sessionStorage.jwt
     })
   }
 
@@ -74,7 +75,7 @@ class SearchBar extends React.Component{
 
           <div className="navbar-brand topnav">
             <strong>
-              <Link onClick={this.onMyItinerariesHandler}>
+              <Link to="/my-lyst" onClick={this.onMyItinerariesHandler}>
                 My Lysts
               </Link>
             </strong>

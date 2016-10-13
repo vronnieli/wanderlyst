@@ -74,6 +74,25 @@ export function searchedItineraries(searchTerm){
   }
 }
 
+export function myItineraries(user){
+  const itineraries = fetch(`${BASE_URL}itineraries/mylyst`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  }).then((response) => {
+    return response.json()
+  }).then((itinerariesPayload) => {
+    return itinerariesPayload
+  })
+  return {
+    type: 'MY_ITINERARIES',
+    payload: itineraries
+  }
+}
+
 export function fetchItinerary(paramsId){
   const itinerary = fetch(`${BASE_URL}itineraries/${paramsId}`).then((response) => {return response.json()}).then((itineraryPayload) => {return itineraryPayload})
   return {
