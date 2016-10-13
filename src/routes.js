@@ -7,6 +7,7 @@ import ItinerariesNew from './components/itineraries_new'
 import ItinerariesShow from './components/itineraries_show'
 import LoginForm from './components/login_form'
 import SignUpForm from './components/sign_up_form'
+import ItinerariesUpdate from './components/itineraries_update'
 
 export default (
   <Route>
@@ -16,6 +17,7 @@ export default (
       <Route path="/itineraries" component={ItinerariesIndex} >
         <Route path="/itineraries/new" component={ItinerariesNew} onEnter={requireAuth} />
         <Route path="/itineraries/:id" component={ItinerariesShow} />
+        <Route path="/itineraries/:id/update" component={ItinerariesUpdate} />
       </Route>
     </Route>
   </Route>

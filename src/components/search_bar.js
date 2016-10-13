@@ -10,6 +10,7 @@ class SearchBar extends React.Component{
     this.state = {jwt: sessionStorage.jwt}
     this.onSubmitHandler = this.onSubmitHandler.bind(this)
     this.onLogOutHandler = this.onLogOutHandler.bind(this)
+    this.onMyItinerariesHandler = this.onMyItinerariesHandler.bind(this)
   }
 
 
@@ -23,16 +24,17 @@ class SearchBar extends React.Component{
     event.target.children[1].value = ""
   }
 
+  onMyItinerariesHandler(event){
+    debugger;
+    this.props.actions.searchedItineraries({
+    })
+  }
+
   onLogOutHandler(event) {
     event.preventDefault();
     this.props.actions.logOutUser();
     this.setState({jwt: sessionStorage.jwt})
   }
-
-  // onLogInHandler(event) {
-  //   event.preventDefault();
-  //   debugger;
-  // }
 
   sessionBasedLink(){
     if (sessionStorage.jwt == undefined) {
@@ -53,6 +55,7 @@ class SearchBar extends React.Component{
     } else {
       return(
         <div>
+
           <div className="navbar-brand topnav">
             <strong>
               <Link onClick={this.onLogOutHandler}>
@@ -60,6 +63,7 @@ class SearchBar extends React.Component{
               </Link>
             </strong>
           </div>
+
           <div className="navbar-brand topnav">
             <strong>
               <Link to="/itineraries/new">
@@ -67,6 +71,15 @@ class SearchBar extends React.Component{
               </Link>
             </strong>
           </div>
+
+          <div className="navbar-brand topnav">
+            <strong>
+              <Link onClick={this.onMyItinerariesHandler}>
+                My Lysts
+              </Link>
+            </strong>
+          </div>
+
         </div>
       )
     }

@@ -74,6 +74,13 @@ export function searchedItineraries(searchTerm){
   }
 }
 
+export function fetchItinerary(paramsId){
+  const itinerary = fetch(`${BASE_URL}itineraries/${paramsId}`).then((response) => {return response.json()}).then((itineraryPayload) => {return itineraryPayload})
+  return {
+    type: 'FETCH_ITINERARY',
+    payload: itinerary
+  }
+}
 
 export function fetchItineraries(){
   const itineraries = fetch(`${BASE_URL}itineraries`).then((response) => {return response.json()}).then((itinerariesPayload) => {return itinerariesPayload})
@@ -90,11 +97,30 @@ export function createItinerary(params){
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${sessionStorage.jwt}`
+      'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
+    }
+  })
+  // debugger
+  return {
+    type: 'CREATE_ITINERARY',
+    payload: itinerary
+  }
+}
+
+export function updateItinerary(params){
+  // debugger
+  // const headers = this.requestHeaders();
+  const itinerary = fetch(`${BASE_URL}itineraries/${params.itinerary.id}`, {
+    method: 'PATCH',
+    body: JSON.stringify(params),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
     }
   })
   return {
-    type: 'CREATE_ITINERARY',
+    type: 'UPDATE_ITINERARY',
     payload: itinerary
   }
 }

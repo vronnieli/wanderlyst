@@ -10,6 +10,10 @@ export default function itinerariesReducer(state=[], action) {
     debugger;
       browserHistory.push('/itineraries')
       return [...state, action.payload]
+    case 'FETCH_ITINERARY':
+      return action.payload
+    case 'UPDATE_ITINERARY':
+      return [...state, action.payload]
     default:
       return state;
   }
