@@ -25,7 +25,8 @@ class SearchBar extends React.Component{
   }
 
   onMyItinerariesHandler(event){
-    debugger;
+    // debugger;
+    event.preventDefault();
     this.props.actions.myItineraries({
       jwt: sessionStorage.jwt
     })

@@ -66,13 +66,12 @@ function ItinerariesIndex(props){
       </div>
     )
   }
-  //
+
   return (
     <div>
       <div className="col-lg-4">
         {props.itineraries.map(renderItineraries)}
       </div>
-      {/* {React.cloneElement(props.children, {...props})} */}
       {props.children}
     </div>
   )

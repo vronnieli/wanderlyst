@@ -5,6 +5,8 @@ export default function itinerariesReducer(state=[], action) {
     case 'FETCH_ITINERARIES':
       return action.payload;
     case 'MY_ITINERARIES':
+    // debugger
+      browserHistory.push('/my-lyst');
       return action.payload;
     case 'SEARCHED_ITINERARIES':
       return action.payload

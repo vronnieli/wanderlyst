@@ -74,19 +74,21 @@ export function searchedItineraries(searchTerm){
   }
 }
 
-export function myItineraries(user){
-  const itineraries = fetch(`${BASE_URL}itineraries/mylyst`, {
+export function myItineraries(userJWT){
+  // debugger
+  const itineraries = fetch(`${BASE_URL}itineraries/:my_lyst`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(user)
+    body: JSON.stringify(userJWT)
   }).then((response) => {
     return response.json()
   }).then((itinerariesPayload) => {
     return itinerariesPayload
   })
+  // debugger
   return {
     type: 'MY_ITINERARIES',
     payload: itineraries
