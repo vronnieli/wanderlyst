@@ -33,7 +33,7 @@ class LocationForm extends React.Component {
     return(
       <div className="activities">
         <div className="panel-group-item">
-          <input className="form-control" type="text" ref="location-city" onChange={this.props.updateLocation} id={location} name={day} value={this.props.location.city}/>
+          <input className="form-control" type="text" ref="location-city" onChange={this.props.updateLocation} id={locationId} name={day} placeholder={this.props.location.city}/>
         </div>
 
         <br/>

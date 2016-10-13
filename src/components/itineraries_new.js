@@ -135,6 +135,7 @@ class ItinerariesNew extends React.Component {
   }
 
   updateLocation(event) {
+    // debugger
     const location = event.target.id
     const day = event.target.name
     const newValue = event.target.value
@@ -144,6 +145,7 @@ class ItinerariesNew extends React.Component {
   }
 
   updateActivity(event) {
+    // debugger
     const location = event.target.id
     const day = event.target.name
     const activity = event.target.alt

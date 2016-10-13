@@ -129,11 +129,11 @@ class ItinerariesUpdate extends React.Component {
 
   updateLocation(event) {
     // debugger;
-    const location = event.target.id
-    const day = event.target.name
+    const location = parseInt(event.target.id)
+    const day = parseInt(event.target.name)
     const newValue = event.target.value
     const copyOfState = Object.assign({},this.state)
-    copyOfState.itinerary.days[day-1].locations[location-1].city = newValue
+    copyOfState.itinerary.days.find(x => x.day === day).locations.find(x => x.id === location).city = event.target.value = newValue
     this.setState(copyOfState)
   }
 
