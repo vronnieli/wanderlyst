@@ -37,7 +37,7 @@ class SearchBar extends React.Component{
   }
 
   sessionBasedLink(){
-    if (sessionStorage.jwt == undefined) {
+    if (!sessionStorage.jwt) {
       return(
         <div>
           <div className="navbar-brand topnav">
@@ -122,6 +122,7 @@ class SearchBar extends React.Component{
 
 function mapStateToProps(state){
   return {
+    session: !!sessionStorage.jwt,
     itineraries: state.itineraries
   }
 }
