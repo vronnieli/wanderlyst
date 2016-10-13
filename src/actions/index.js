@@ -100,7 +100,7 @@ export function createItinerary(params){
       'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
     }
   })
-  // debugger
+  debugger
   return {
     type: 'CREATE_ITINERARY',
     payload: itinerary
