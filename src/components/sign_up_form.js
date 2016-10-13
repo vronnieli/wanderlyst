@@ -67,7 +67,7 @@ class SignUpForm extends React.Component {
                 <br />
                 <input className="form-control" type="password" name="password" onChange={this.onChangeHandler} value={this.state.user.password} />
                 <br />
-                <input type="submit" />
+                <input className="btn btn-default" type="submit" />
                 <br />
               </form>
             </div>

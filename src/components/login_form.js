@@ -50,7 +50,7 @@ class LogInForm extends React.Component {
                 <br />
                 <input className="form-control" type="password" name="password" onChange={this.onChangeHandler} value={this.state.credentials.password} />
                 <br />
-                <input type="submit"/>
+                <input className="btn btn-default" type="submit"/>
                 <br />
               </form>
             </div>
