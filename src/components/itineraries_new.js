@@ -12,9 +12,9 @@ class ItinerariesNew extends React.Component {
       itinerary: {
         name: "",
         upvotes: 0,
-        users: [{
-          name: "Me"
-        }],
+        // users: [{
+        //   name: "Me"
+        // }],
         days: [{
           day: 1,
           locations: [{
@@ -27,7 +27,8 @@ class ItinerariesNew extends React.Component {
             }]
           }]
         }]
-      }
+      },
+      user: sessionStorage.jwt
     }
     this.addDay = this.addDay.bind(this)
     this.addLocation = this.addLocation.bind(this)
