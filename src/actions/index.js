@@ -74,13 +74,6 @@ export function searchedItineraries(searchTerm){
   }
 }
 
-export function fetchItinerary(paramsId){
-  const itinerary = fetch(`${BASE_URL}itineraries/${paramsId}`).then((response) => {return response.json()}).then((itineraryPayload) => {return itineraryPayload})
-  return {
-    type: 'FETCH_ITINERARY',
-    payload: itinerary
-  }
-}
 
 export function fetchItineraries(){
   const itineraries = fetch(`${BASE_URL}itineraries`).then((response) => {return response.json()}).then((itinerariesPayload) => {return itinerariesPayload})
@@ -99,8 +92,7 @@ export function createItinerary(params){
       'Content-Type': 'application/json',
       'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
     }
-  })
-  debugger
+  }).then((response) => {return response.json()}).then((itineraryPayload) => {return itineraryPayload})
   return {
     type: 'CREATE_ITINERARY',
     payload: itinerary
@@ -110,7 +102,7 @@ export function createItinerary(params){
 export function updateItinerary(params){
   // debugger
   // const headers = this.requestHeaders();
-  const itinerary = fetch(`${BASE_URL}itineraries/${params.itinerary.id}`, {
+  const itineraries = fetch(`${BASE_URL}itineraries/${params.itinerary.id}`, {
     method: 'PATCH',
     body: JSON.stringify(params),
     headers: {
@@ -118,9 +110,26 @@ export function updateItinerary(params){
       'Content-Type': 'application/json',
       'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
     }
-  })
+  }).then((response) => {return response.json()}).then((itinerariesPayload) => {return itinerariesPayload})
   return {
     type: 'UPDATE_ITINERARY',
-    payload: itinerary
+    payload: itineraries
+  }
+}
+
+export function addVote(params) {
+  debugger;
+  const itineraries = fetch(`${BASE_URL}itineraries/${params.itinerary.id}`, {
+    method: 'PATCH',
+    body: JSON.stringify(params),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
+    }
+  }).then((response) => {return response.json()}).then((itinerariesPayload) => {return itinerariesPayload})
+  return {
+    type: 'ADD_VOTE',
+    payload: itineraries
   }
 }

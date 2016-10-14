@@ -11,10 +11,6 @@ class ItinerariesNew extends React.Component {
     this.state = {
       itinerary: {
         name: "",
-        upvotes: 0,
-        user: {
-          name: ""
-        },
         days: [{
           day: 1,
           locations: [{
@@ -27,7 +23,8 @@ class ItinerariesNew extends React.Component {
             }]
           }]
         }]
-      }
+      },
+      user: sessionStorage.jwt
     }
     this.addDay = this.addDay.bind(this)
     this.addLocation = this.addLocation.bind(this)
@@ -188,7 +185,6 @@ class ItinerariesNew extends React.Component {
 
   render() {
     const dayFormElements = this.collectDayForm()
-
     return(
       <div className="col-lg-8">
         <div className="panel panel-default">

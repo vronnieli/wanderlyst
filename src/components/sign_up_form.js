@@ -37,32 +37,40 @@ class SignUpForm extends React.Component {
   }
   render(){
     return(
-      <div className="col-lg-3">
-        <div className="panel panel-default">
-          <div className="panel-heading">
-            <h2 className="panel-title">
-              Sign Up
-            </h2>
-          </div>
-          <div className="form-inline">
-            <form onSubmit={this.newUserHandler}>
-              <label>First Name:</label>
-              <input type="text" name="first_name" onChange={this.onChangeHandler} value={this.state.user.first_name} />
-              <br />
-              <label>Last Name:</label>
-              <input type="text" name="last_name" onChange={this.onChangeHandler} value={this.state.user.last_name} />
-              <br />
-              <label>Email:</label>
-              <input type="text" name="email" onChange={this.onChangeHandler} value={this.state.user.email} />
-              <br />
-              <label>Username:</label>
-              <input type="text" name="username" onChange={this.onChangeHandler} value={this.state.user.username} />
-              <br />
-              <label>Password:</label>
-              <input type="password" name="password" onChange={this.onChangeHandler} value={this.state.user.password} />
-              <br />
-              <input type="submit" />
-            </form>
+      <div className="center">
+        <div className="col-lg-3">
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <h2 className="panel-title">
+                Sign Up
+              </h2>
+            </div>
+            <div className="form-inline">
+              <form onSubmit={this.newUserHandler}>
+                <label>First Name:</label>
+                <br />
+                <input className="form-control" type="text" name="first_name" onChange={this.onChangeHandler} value={this.state.user.first_name} />
+                <br />
+                <label>Last Name:</label>
+                <br />
+                <input className="form-control" type="text" name="last_name" onChange={this.onChangeHandler} value={this.state.user.last_name} />
+                <br />
+                <label>Email:</label>
+                <br />
+                <input className="form-control" type="text" name="email" onChange={this.onChangeHandler} value={this.state.user.email} />
+                <br />
+                <label>Username:</label>
+                <br />
+                <input className="form-control" type="text" name="username" onChange={this.onChangeHandler} value={this.state.user.username} />
+                <br />
+                <label>Password:</label>
+                <br />
+                <input className="form-control" type="password" name="password" onChange={this.onChangeHandler} value={this.state.user.password} />
+                <br />
+                <input className="btn btn-default" type="submit" />
+                <br />
+              </form>
+            </div>
           </div>
         </div>
       </div>

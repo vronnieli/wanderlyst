@@ -52,7 +52,6 @@ function ItinerariesIndex(props){
   function renderItineraries(itinerary) {
     //
     return (
-      <div >
         <div className="panel panel-default">
           <div className="panel-heading">
           <button className="btn btn-default right">{itinerary.upvotes} Upvotes</button>
@@ -63,7 +62,6 @@ function ItinerariesIndex(props){
           </div>
             {itinerary.days.map(renderDays)}
         </div>
-      </div>
     )
   }
   //
@@ -72,7 +70,6 @@ function ItinerariesIndex(props){
       <div className="col-lg-4">
         {props.itineraries.map(renderItineraries)}
       </div>
-      {/* {React.cloneElement(props.children, {...props})} */}
       {props.children}
     </div>
   )

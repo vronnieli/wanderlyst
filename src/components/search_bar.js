@@ -72,13 +72,13 @@ class SearchBar extends React.Component{
             </strong>
           </div>
 
-          <div className="navbar-brand topnav">
+          {/* <div className="navbar-brand topnav">
             <strong>
               <Link onClick={this.onMyItinerariesHandler}>
                 My Lysts
               </Link>
             </strong>
-          </div>
+          </div> */}
 
         </div>
       )
