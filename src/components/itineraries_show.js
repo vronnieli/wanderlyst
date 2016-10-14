@@ -7,7 +7,6 @@ import * as actions from '../actions';
 class ItinerariesShow extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {itinerary: props.itinerary}
     this.renderUsers = this.renderUsers.bind(this)
     this.renderDays = this.renderDays.bind(this)
     this.renderLocations = this.renderLocations.bind(this)
@@ -20,7 +19,6 @@ class ItinerariesShow extends React.Component {
     const copyOfState = Object.assign({}, this.state)
     copyOfState.itinerary.upvotes += 1
     this.setState(copyOfState)
-    debugger;
     this.props.actions.addVote(copyOfState)
   }
 
@@ -65,10 +63,9 @@ class ItinerariesShow extends React.Component {
   }
 
   render() {
-    debugger;
-    const itinerary = this.state.itinerary
+    const itinerary = this.props.itinerary
     return (
-      <div className="col-lg-6">
+      <div className="col-lg-8">
         <div className="panel panel-default">
           <div className="panel-heading">
             <button className="btn btn-default right" onClick={this.addVote} >{itinerary.upvotes} Upvotes</button>
@@ -93,7 +90,6 @@ function mapStateToProps(state, ownProps){
   const itinerary = state.itineraries.find(itinerary => itinerary.id == ownProps.params.id);
   if (itinerary) {
     return {
-      itineraries: state.itineraries,
       itinerary: itinerary
     }
   } else {
