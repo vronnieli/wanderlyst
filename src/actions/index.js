@@ -99,7 +99,7 @@ export function createItinerary(params){
       'Content-Type': 'application/json',
       'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`
     }
-  })
+  }).then((response) => {return response.json()}).then((itineraryPayload) => {return itineraryPayload})
   return {
     type: 'CREATE_ITINERARY',
     payload: itinerary
