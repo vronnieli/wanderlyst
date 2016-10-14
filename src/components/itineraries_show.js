@@ -16,10 +16,11 @@ class ItinerariesShow extends React.Component {
 
   addVote(event) {
     event.preventDefault();
-    const copyOfState = Object.assign({}, this.state)
-    copyOfState.itinerary.upvotes += 1
-    this.setState(copyOfState)
-    this.props.actions.addVote(copyOfState)
+    const copyOfState = Object.assign({}, this.props.itinerary)
+    copyOfState.upvotes += 1
+    debugger;
+    // this.setState(copyOfState)
+    this.props.actions.addVote({itinerary: copyOfState})
   }
 
   renderActivities(activity) {
