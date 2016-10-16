@@ -28,7 +28,7 @@ class ItinerariesShow extends React.Component {
         <p draggable="true" className="list-group-item" key={activity.id}>
           {activity.name}
           <br/>
-          <img className="image" src={"https://wanderlyst-api.herokuapp.com/api/v1"+activity.image_url_thumb} />
+          <img className="image" src={activity.image_url_thumb} />
         </p>
     )
   }

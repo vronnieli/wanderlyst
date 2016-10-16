@@ -1,5 +1,5 @@
-export const BASE_URL = 'https://wanderlyst-api.herokuapp.com/api/v1/'
-//export const BASE_URL = 'http://localhost:3000/api/v1/'
+//export const BASE_URL = 'https://wanderlyst-api.herokuapp.com/api/v1/'
+export const BASE_URL = 'http://localhost:3000/api/v1/'
 
 export function createUser(params){
   const user = fetch(`${BASE_URL}users`, {
